@@ -17,14 +17,19 @@ class MenuGroupEditor {
     private(set) var settings: [Setting]
     weak var delegate: SettingPresentationDelegate? = nil
 
+    var title: String {
+        return menuGroup?.title ?? "New Group"
+    }
+
     fileprivate let menuGroup: MenuGroup?
 
     init(menuGroup: MenuGroup?) {
         self.menuGroup = menuGroup
         let titleSetting = Setting(title: "Title", inputFieldType: .small(keyboardType: .default))
         let imageSetting = Setting(title: "Image", inputFieldType: .image)
+        let descriptionSetting = Setting(title: "Description", inputFieldType: .large)
 
-        settings = [titleSetting, imageSetting]
+        settings = [titleSetting, imageSetting, descriptionSetting]
 
         titleSetting.onChangeAction = { (action) in
             if case .string(let value) = action {

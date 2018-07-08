@@ -9,7 +9,6 @@
 import UIKit
 
 protocol ImageSelectionCellDelegate: class {
-    func addImage(fromCell: UITableViewCell)
     func updateImage(fromCell: UITableViewCell)
     func deleteImage(fromCell: UITableViewCell)
 }
@@ -23,10 +22,6 @@ class ImageSelectionTableViewCell: UITableViewCell, CellFromNib {
 
     override func prepareForReuse() {
         self.delegate = nil
-    }
-
-    @IBAction func addImage(_ sender: Any) {
-        delegate?.addImage(fromCell: self)
     }
 
     @IBAction func updateImage(_ sender: Any) {

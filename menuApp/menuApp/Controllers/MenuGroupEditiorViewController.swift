@@ -39,7 +39,7 @@ class MenuGroupEditiorViewController: UIViewController {
     }
 
     fileprivate func setTitle() {
-        title = "Edit"
+        title = model?.title
     }
 
     fileprivate func configureBarButtons() {
@@ -163,11 +163,6 @@ extension MenuGroupEditiorViewController: InputCellDelegate {
 }
 
 extension MenuGroupEditiorViewController: ImageSelectionCellDelegate {
-
-    func addImage(fromCell cell: UITableViewCell) {
-        indexOfEditingImage = tableView.indexPath(for: cell)
-        showImagePickerController()
-    }
 
     func updateImage(fromCell cell: UITableViewCell) {
         indexOfEditingImage = tableView.indexPath(for: cell)

@@ -28,22 +28,15 @@
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GBN-ZK-Uva">
                         <rect key="frame" x="82" y="15" width="264" height="30"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0h-5o-2a5">
-                                <rect key="frame" x="0.0" y="0.0" width="88" height="30"/>
-                                <state key="normal" title="Add"/>
-                                <connections>
-                                    <action selector="addImage:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1DH-3R-QZi"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0j3-83-18J">
-                                <rect key="frame" x="88" y="0.0" width="88" height="30"/>
+                                <rect key="frame" x="0.0" y="0.0" width="132" height="30"/>
                                 <state key="normal" title="Update"/>
                                 <connections>
                                     <action selector="updateImage:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VKW-xN-pfZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bu-A0-aZd">
-                                <rect key="frame" x="176" y="0.0" width="88" height="30"/>
+                                <rect key="frame" x="132" y="0.0" width="132" height="30"/>
                                 <state key="normal" title="Delete"/>
                                 <connections>
                                     <action selector="deleteImage:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cJ9-EJ-Aq8"/>
