@@ -59,16 +59,20 @@ class MenuGroupViewController: UIViewController {
         try! frController?.performFetch()
     }
 
-    fileprivate func showEditor(for group: MenuGroup?) {
-        let editorVC = MenuGroupEditiorViewController(nibName: "MenuGroupEditiorViewController", bundle: nil)
+    fileprivate var editorVC: MenuGroupEditiorViewController {
+        return MenuGroupEditiorViewController(nibName: "MenuGroupEditiorViewController", bundle: nil)
+    }
 
+    fileprivate func showEditor(for group: MenuGroup?) {
+
+        let _editorVC = editorVC
         let model = MenuGroupEditor(menuGroup: group)
 
-        editorVC.model = model
+        _editorVC.model = model
 
         
         let navVC = UINavigationController()
-        navVC.viewControllers = [editorVC]
+        navVC.viewControllers = [_editorVC]
 
         present(navVC, animated: true, completion: nil)
     }
@@ -105,9 +109,9 @@ extension MenuGroupViewController: UITableViewDataSource {
     func editRowAction() -> UITableViewRowAction {
 
         if _editRowAction == nil {
-            _editRowAction = UITableViewRowAction(style: .normal, title: "Edit", handler: {[weak self] (action, indexPath) in
-                let menuGroup = self?.frController?.object(at: indexPath)
-                self?.showEditor(for: menuGroup)
+            _editRowAction = UITableViewRowAction(style: .normal, title: "Edit", handler: {[unowned self] (action, indexPath) in
+                let menuGroup = self.frController?.object(at: indexPath)
+                self.showEditor(for: menuGroup)
             })
         }
         return _editRowAction!

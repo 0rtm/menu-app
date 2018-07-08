@@ -36,16 +36,16 @@ class MenuGroupEditor {
 
     private let isNew: Bool
 
-    init(menuGroup: MenuGroup?) {
+    init(menuGroup group: MenuGroup?) {
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         moc = appDelegate.persistentContainer.viewContext
 
-        if menuGroup == nil {
+        if group == nil {
             self.menuGroup = MenuGroup(context: moc)
             isNew = true
         } else {
-            self.menuGroup = menuGroup
+            self.menuGroup = group
             isNew = false
         }
 
@@ -55,24 +55,27 @@ class MenuGroupEditor {
 
         settings = [titleSetting, imageSetting, descriptionSetting]
 
-        titleSetting.onChangeAction = {[weak self] (action) in
+        titleSetting.onChangeAction = {[weak self, weak titleSetting] (action) in
             if case .string(let value) = action {
 
                 guard let newTitle = value else { return }
                 self?.menuGroup?.title = newTitle
             }
-            titleSetting.currentValue = action
+            titleSetting?.currentValue = action
         }
 
         titleSetting.currentValue = SettingValue.string(newValue: menuGroup?.title)
 
-        imageSetting.onChangeAction = {[weak self] (action) in
+        imageSetting.onChangeAction = {[weak self, weak imageSetting]  (action) in
             if case .image(let image) = action {
-                print("title will be set to")
+                self?.menuGroup?.image = image
             }
-            imageSetting.currentValue = action
-            self?.delegate?.update(setting: imageSetting)
+            imageSetting?.currentValue = action
+            if let _imageSetting = imageSetting {
+                self?.delegate?.update(setting: _imageSetting)
+            }
         }
+        imageSetting.currentValue = SettingValue.image(newValue: menuGroup?.image)
     }
 
     func save() {

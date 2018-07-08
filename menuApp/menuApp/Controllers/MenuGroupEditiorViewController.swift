@@ -57,7 +57,7 @@ class MenuGroupEditiorViewController: UIViewController {
     @objc
     fileprivate func save() {
         model?.save()
-        cancel()
+        self.dismiss(animated: true, completion: nil)
     }
 
     @objc
