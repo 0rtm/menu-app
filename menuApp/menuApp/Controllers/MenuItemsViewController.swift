@@ -1,20 +1,20 @@
 //
-//  MenuGroupViewController.swift
+//  MenuItemsViewController.swift
 //  menuApp
 //
-//  Created by Artem Tselikov on 2018-07-07.
+//  Created by Artem Tselikov on 2018-07-08.
 //  Copyright © 2018 Artem Tselikov. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class MenuGroupViewController: UIViewController {
+class MenuItemsViewController: UIViewController {
 
-    @IBOutlet fileprivate weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
+    fileprivate var fetchedResultsController: NSFetchedResultsController<MenuItem>?
 
-    fileprivate var fetchedResultsController: NSFetchedResultsController<MenuGroup>?
-    fileprivate var _editRowAction: UITableViewRowAction?
+    var menuGroup: MenuGroup? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class MenuGroupViewController: UIViewController {
     }
 
     fileprivate func setTitle() {
-        title = "Menu Groups"
+        title = menuGroup?.title ?? "Items"
     }
 
     fileprivate func configureBarButtons() {
@@ -40,7 +40,7 @@ class MenuGroupViewController: UIViewController {
     fileprivate func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(MenuGroupTableViewCell.nib, forCellReuseIdentifier: MenuGroupTableViewCell.reuseIdentifier)
+        tableView.register(MenuItemTableViewCell.nib, forCellReuseIdentifier: MenuItemTableViewCell.reuseIdentifier)
         tableView.tableFooterView = UIView()
     }
 
@@ -49,7 +49,7 @@ class MenuGroupViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let moc = appDelegate.persistentContainer.viewContext
 
-        let r =  NSFetchRequest<MenuGroup>(entityName: "MenuGroup")
+        let r =  NSFetchRequest<MenuItem>(entityName: "MenuItem")
         r.fetchBatchSize = 20
         r.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
 
@@ -59,84 +59,58 @@ class MenuGroupViewController: UIViewController {
         tableView.reloadData()
     }
 
-    fileprivate var editorVC: MenuGroupEditiorViewController {
-        return MenuGroupEditiorViewController(nibName: "MenuGroupEditiorViewController", bundle: nil)
-    }
+    @objc
+    fileprivate func addItem() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let editorVC = MenuGroupEditiorViewController(nibName: "MenuGroupEditiorViewController", bundle: nil)
+        let moc = appDelegate.persistentContainer.viewContext
 
-    fileprivate func showEditor(for group: MenuGroup?) {
+        let item = MenuItem(context: moc)
 
-        let _editorVC = editorVC
-        let model = MenuGroupEditor(menuGroup: group)
+        let model = MenuItemEditor(item: item, isNew: true)//MenuGroupEditor(menuGroup: group)
 
-        _editorVC.model = model
+        editorVC.model = model
 
-        
         let navVC = UINavigationController()
-        navVC.viewControllers = [_editorVC]
+        navVC.viewControllers = [editorVC]
 
         present(navVC, animated: true, completion: nil)
     }
-
-    @objc
-    fileprivate func addItem() {
-        showEditor(for: nil)
-    }
-
+    
 }
 
-extension MenuGroupViewController: UITableViewDataSource {
+extension MenuItemsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController?.fetchedObjects?.count ?? 0
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return MenuItemTableViewCell.defaultHeight
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        guard let menuGroup = fetchedResultsController?.object(at: indexPath) else {
+        guard let menuItem = fetchedResultsController?.object(at: indexPath) else {
             fatalError("Fetched results controller must not be nil")
         }
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: MenuGroupTableViewCell.reuseIdentifier, for: indexPath) as! MenuGroupTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: MenuItemTableViewCell.reuseIdentifier, for: indexPath) as! MenuItemTableViewCell
 
-        cell.configureFor(menuGroup: menuGroup)
+        cell.configure(forMenuItem: menuItem)
+
         return cell
-    }
-
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        return [editRowAction()]
-    }
-
-    func editRowAction() -> UITableViewRowAction {
-
-        if _editRowAction == nil {
-            _editRowAction = UITableViewRowAction(style: .normal, title: "Edit", handler: {[unowned self] (action, indexPath) in
-                let menuGroup = self.fetchedResultsController?.object(at: indexPath)
-                self.showEditor(for: menuGroup)
-            })
-        }
-        return _editRowAction!
     }
 }
 
-extension MenuGroupViewController: UITableViewDelegate {
+extension MenuItemsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
-        guard let menuGroup = fetchedResultsController?.object(at: indexPath) else {
-            return
-        }
-
-        //let model =
-        let vc = MenuItemsViewController()
-        let backB = UIBarButtonItem()
-        backB.title = ""
-        self.navigationItem.backBarButtonItem = backB
-        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
-extension MenuGroupViewController: NSFetchedResultsControllerDelegate {
+extension MenuItemsViewController: NSFetchedResultsControllerDelegate {
 
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()

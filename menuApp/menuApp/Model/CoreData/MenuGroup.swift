@@ -30,7 +30,6 @@ public class MenuGroup: NSManagedObject {
             }
             imageData = UIImageJPEGRepresentation(_image, 0.95)
         }
-
     }
 
 }

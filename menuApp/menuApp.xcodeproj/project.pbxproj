@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC4CFDE220F2BCD60034B288 /* MenuItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4CFDE020F2BCD60034B288 /* MenuItemsViewController.swift */; };
+		AC4CFDE320F2BCD60034B288 /* MenuItemsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4CFDE120F2BCD60034B288 /* MenuItemsViewController.xib */; };
+		AC4CFDE620F2BFB10034B288 /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4CFDE420F2BFB10034B288 /* MenuItemTableViewCell.swift */; };
+		AC4CFDE720F2BFB10034B288 /* MenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4CFDE520F2BFB10034B288 /* MenuItemTableViewCell.xib */; };
+		AC4CFDE920F2C17A0034B288 /* MenuItemEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4CFDE820F2C17A0034B288 /* MenuItemEditor.swift */; };
+		AC4CFDEB20F2C19F0034B288 /* SettingPresentationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4CFDEA20F2C19F0034B288 /* SettingPresentationDelegate.swift */; };
 		AC5E2B6E20F29F4200CE39A3 /* MenuGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E2B6C20F29F4200CE39A3 /* MenuGroupTableViewCell.swift */; };
 		AC5E2B6F20F29F4200CE39A3 /* MenuGroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E2B6D20F29F4200CE39A3 /* MenuGroupTableViewCell.xib */; };
 		AC7C48A820F10B0E004FA179 /* MenuGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7C48A620F10B0E004FA179 /* MenuGroupViewController.swift */; };
@@ -24,6 +30,7 @@
 		ACD5757620F17D42000EA7A2 /* LongInputTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD5757420F17D42000EA7A2 /* LongInputTableViewCell.xib */; };
 		ACD5757B20F188CC000EA7A2 /* ImageSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD5757920F188CC000EA7A2 /* ImageSelectionTableViewCell.swift */; };
 		ACD5757C20F188CC000EA7A2 /* ImageSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD5757A20F188CC000EA7A2 /* ImageSelectionTableViewCell.xib */; };
+		ACDDA18E20F2D3DA006FF685 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDDA18D20F2D3DA006FF685 /* UIColor+Extension.swift */; };
 		ACF8C7BB20F0272B00752385 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF8C7BA20F0272B00752385 /* AppDelegate.swift */; };
 		ACF8C7BD20F0272B00752385 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF8C7BC20F0272B00752385 /* ViewController.swift */; };
 		ACF8C7C020F0272B00752385 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACF8C7BE20F0272B00752385 /* Main.storyboard */; };
@@ -46,6 +53,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC4CFDE020F2BCD60034B288 /* MenuItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemsViewController.swift; sourceTree = "<group>"; };
+		AC4CFDE120F2BCD60034B288 /* MenuItemsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemsViewController.xib; sourceTree = "<group>"; };
+		AC4CFDE420F2BFB10034B288 /* MenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemTableViewCell.swift; sourceTree = "<group>"; };
+		AC4CFDE520F2BFB10034B288 /* MenuItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemTableViewCell.xib; sourceTree = "<group>"; };
+		AC4CFDE820F2C17A0034B288 /* MenuItemEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemEditor.swift; sourceTree = "<group>"; };
+		AC4CFDEA20F2C19F0034B288 /* SettingPresentationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPresentationDelegate.swift; sourceTree = "<group>"; };
 		AC5E2B6C20F29F4200CE39A3 /* MenuGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGroupTableViewCell.swift; sourceTree = "<group>"; };
 		AC5E2B6D20F29F4200CE39A3 /* MenuGroupTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuGroupTableViewCell.xib; sourceTree = "<group>"; };
 		AC7C48A620F10B0E004FA179 /* MenuGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGroupViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +76,7 @@
 		ACD5757420F17D42000EA7A2 /* LongInputTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LongInputTableViewCell.xib; sourceTree = "<group>"; };
 		ACD5757920F188CC000EA7A2 /* ImageSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		ACD5757A20F188CC000EA7A2 /* ImageSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSelectionTableViewCell.xib; sourceTree = "<group>"; };
+		ACDDA18D20F2D3DA006FF685 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		ACF8C7B720F0272B00752385 /* menuApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = menuApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACF8C7BA20F0272B00752385 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACF8C7BC20F0272B00752385 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +117,8 @@
 				AC7C48A720F10B0E004FA179 /* MenuGroupViewController.xib */,
 				AC7C48AC20F110B8004FA179 /* MenuGroupEditiorViewController.swift */,
 				AC7C48AD20F110B8004FA179 /* MenuGroupEditiorViewController.xib */,
+				AC4CFDE020F2BCD60034B288 /* MenuItemsViewController.swift */,
+				AC4CFDE120F2BCD60034B288 /* MenuItemsViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -121,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				AC9D2E7620F25F6E000E9352 /* CellFromNib.swift */,
+				ACDDA18D20F2D3DA006FF685 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -144,6 +161,8 @@
 				ACD5757A20F188CC000EA7A2 /* ImageSelectionTableViewCell.xib */,
 				AC5E2B6C20F29F4200CE39A3 /* MenuGroupTableViewCell.swift */,
 				AC5E2B6D20F29F4200CE39A3 /* MenuGroupTableViewCell.xib */,
+				AC4CFDE420F2BFB10034B288 /* MenuItemTableViewCell.swift */,
+				AC4CFDE520F2BFB10034B288 /* MenuItemTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -200,6 +219,8 @@
 				ACC3981A20F27B4100434BF9 /* InputFieldType.swift */,
 				ACC3981C20F27B5B00434BF9 /* ChaneAction.swift */,
 				ACC3981E20F27C0000434BF9 /* MenuGroupEditor.swift */,
+				AC4CFDE820F2C17A0034B288 /* MenuItemEditor.swift */,
+				AC4CFDEA20F2C19F0034B288 /* SettingPresentationDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -289,9 +310,11 @@
 				AC7C48AF20F110B8004FA179 /* MenuGroupEditiorViewController.xib in Resources */,
 				ACD5757620F17D42000EA7A2 /* LongInputTableViewCell.xib in Resources */,
 				AC7C48A920F10B0E004FA179 /* MenuGroupViewController.xib in Resources */,
+				AC4CFDE320F2BCD60034B288 /* MenuItemsViewController.xib in Resources */,
 				ACD5757C20F188CC000EA7A2 /* ImageSelectionTableViewCell.xib in Resources */,
 				AC5E2B6F20F29F4200CE39A3 /* MenuGroupTableViewCell.xib in Resources */,
 				ACF8C7C520F0272C00752385 /* Assets.xcassets in Resources */,
+				AC4CFDE720F2BFB10034B288 /* MenuItemTableViewCell.xib in Resources */,
 				ACD5757220F17A01000EA7A2 /* ShortInputTableViewCell.xib in Resources */,
 				ACF8C7C020F0272B00752385 /* Main.storyboard in Resources */,
 			);
@@ -311,9 +334,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACDDA18E20F2D3DA006FF685 /* UIColor+Extension.swift in Sources */,
 				ACF8C7C320F0272B00752385 /* menuApp.xcdatamodeld in Sources */,
 				ACF8C7DF20F028CE00752385 /* MenuItem.swift in Sources */,
+				AC4CFDE920F2C17A0034B288 /* MenuItemEditor.swift in Sources */,
+				AC4CFDEB20F2C19F0034B288 /* SettingPresentationDelegate.swift in Sources */,
 				ACC3981920F27B2700434BF9 /* Setting.swift in Sources */,
+				AC4CFDE620F2BFB10034B288 /* MenuItemTableViewCell.swift in Sources */,
 				ACF8C7BD20F0272B00752385 /* ViewController.swift in Sources */,
 				ACC3981F20F27C0000434BF9 /* MenuGroupEditor.swift in Sources */,
 				AC7C48AE20F110B8004FA179 /* MenuGroupEditiorViewController.swift in Sources */,
@@ -324,6 +351,7 @@
 				ACD5757120F17A01000EA7A2 /* ShortInputTableViewCell.swift in Sources */,
 				ACD5757520F17D42000EA7A2 /* LongInputTableViewCell.swift in Sources */,
 				AC5E2B6E20F29F4200CE39A3 /* MenuGroupTableViewCell.swift in Sources */,
+				AC4CFDE220F2BCD60034B288 /* MenuItemsViewController.swift in Sources */,
 				ACC3981D20F27B5B00434BF9 /* ChaneAction.swift in Sources */,
 				AC7C48A820F10B0E004FA179 /* MenuGroupViewController.swift in Sources */,
 				ACC3981B20F27B4100434BF9 /* InputFieldType.swift in Sources */,

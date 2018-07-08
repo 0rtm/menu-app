@@ -24,7 +24,7 @@ class MenuGroupTableViewCell: UITableViewCell, CellFromNib {
             menuImageView.image = img
             menuImageView.backgroundColor = UIColor.clear
         } else {
-            menuImageView.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
+            menuImageView.backgroundColor = UIColor.imagePlaceholderColor
         }
 
 

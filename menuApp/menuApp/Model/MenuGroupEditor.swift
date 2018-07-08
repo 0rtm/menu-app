@@ -10,11 +10,19 @@ import Foundation
 import UIKit
 import CoreData
 
-protocol SettingPresentationDelegate: class {
-    func update(setting: Setting)
+protocol ConfigurableObject {
+
+    var title: String { get }
+    var settings: [Setting] { get }
+    var delegate: SettingPresentationDelegate? { get set }
+    var canSave: Bool { get }
+
+    func saveChanges()
+    
+    func discardChanges()
 }
 
-class MenuGroupEditor {
+class MenuGroupEditor: ConfigurableObject {
 
     private(set) var settings: [Setting]
     weak var delegate: SettingPresentationDelegate? = nil
@@ -28,6 +36,15 @@ class MenuGroupEditor {
         }
 
         return _title.count > 0 ? _title : genericTitle
+    }
+
+    var canSave: Bool {
+
+        guard let titleLen = menuGroup?.title.count else {
+            return false
+        }
+
+        return titleLen > 0
     }
 
     fileprivate let menuGroup: MenuGroup?
@@ -55,13 +72,14 @@ class MenuGroupEditor {
 
         settings = [titleSetting, imageSetting, descriptionSetting]
 
-        titleSetting.onChangeAction = {[weak self, weak titleSetting] (action) in
+        titleSetting.onChangeAction = {[unowned self, weak titleSetting] (action) in
             if case .string(let value) = action {
 
                 guard let newTitle = value else { return }
-                self?.menuGroup?.title = newTitle
+                self.menuGroup?.title = newTitle
             }
             titleSetting?.currentValue = action
+            self.delegate?.updateCanSave(canSave: self.canSave)
         }
 
         titleSetting.currentValue = SettingValue.string(newValue: menuGroup?.title)
@@ -78,11 +96,11 @@ class MenuGroupEditor {
         imageSetting.currentValue = SettingValue.image(newValue: menuGroup?.image)
     }
 
-    func save() {
+    func saveChanges() {
         try! moc.save()
     }
 
-    func cancel() {
+    func discardChanges() {
 
         if !isNew {
             moc.reset()

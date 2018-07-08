@@ -12,8 +12,9 @@ class MenuGroupEditiorViewController: UIViewController {
 
     @IBOutlet fileprivate weak var tableView: UITableView!
 
-    var model: MenuGroupEditor? // = MenuGroupEditor(menuGroup: nil)
+    var model: ConfigurableObject? // = MenuGroupEditor(menuGroup: nil)
     fileprivate var indexOfEditingImage: IndexPath? = nil
+    var saveButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +48,9 @@ class MenuGroupEditiorViewController: UIViewController {
     }
 
     fileprivate func configureBarButtons() {
-        let addButton = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(save))
-        self.navigationItem.rightBarButtonItem = addButton
+        saveButton = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(save))
+        saveButton.isEnabled = model?.canSave ?? false
+        self.navigationItem.rightBarButtonItem = saveButton
 
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancel))
         self.navigationItem.leftBarButtonItem = cancelButton
@@ -56,13 +58,13 @@ class MenuGroupEditiorViewController: UIViewController {
 
     @objc
     fileprivate func save() {
-        model?.save()
+        model?.saveChanges()
         self.dismiss(animated: true, completion: nil)
     }
 
     @objc
     fileprivate func cancel() {
-        model?.cancel()
+        model?.discardChanges()
         self.dismiss(animated: true, completion: nil)
     }
 
@@ -152,6 +154,10 @@ extension MenuGroupEditiorViewController: UITableViewDelegate {
 }
 
 extension MenuGroupEditiorViewController: SettingPresentationDelegate {
+
+    func updateCanSave(canSave: Bool) {
+        saveButton.isEnabled = canSave
+    }
 
     func update(setting: Setting) {
 
