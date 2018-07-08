@@ -11,5 +11,6 @@ import UIKit
 
 enum InputFieldType {
     case small(keyboardType: UIKeyboardType)
-    case large()
+    case large
+    case image
 }

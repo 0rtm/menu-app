@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum ChangeAction {
+enum SettingValue {
     case string(newValue: String?)
     case image(newValue: UIImage?)
 }

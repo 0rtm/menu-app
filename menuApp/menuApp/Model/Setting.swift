@@ -8,8 +8,20 @@
 
 import Foundation
 
-struct Setting {
+class Setting {
     let title: String
     let inputFieldType: InputFieldType
-    let onChangeAction: ((ChangeAction)->())
+    var onChangeAction: ((SettingValue)->())? = nil
+    var currentValue: SettingValue? = nil
+
+    init(title: String, inputFieldType: InputFieldType) {
+        self.title = title
+        self.inputFieldType = inputFieldType
+    }
+}
+
+extension Setting: Equatable {
+    static func == (lhs: Setting, rhs: Setting) -> Bool {
+        return lhs.title == rhs.title
+    }
 }

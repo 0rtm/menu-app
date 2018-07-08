@@ -15,6 +15,7 @@
 		ACC3981920F27B2700434BF9 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC3981820F27B2700434BF9 /* Setting.swift */; };
 		ACC3981B20F27B4100434BF9 /* InputFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC3981A20F27B4100434BF9 /* InputFieldType.swift */; };
 		ACC3981D20F27B5B00434BF9 /* ChaneAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC3981C20F27B5B00434BF9 /* ChaneAction.swift */; };
+		ACC3981F20F27C0000434BF9 /* MenuGroupEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC3981E20F27C0000434BF9 /* MenuGroupEditor.swift */; };
 		ACD5757120F17A01000EA7A2 /* ShortInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD5756F20F17A01000EA7A2 /* ShortInputTableViewCell.swift */; };
 		ACD5757220F17A01000EA7A2 /* ShortInputTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD5757020F17A01000EA7A2 /* ShortInputTableViewCell.xib */; };
 		ACD5757520F17D42000EA7A2 /* LongInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD5757320F17D42000EA7A2 /* LongInputTableViewCell.swift */; };
@@ -51,6 +52,7 @@
 		ACC3981820F27B2700434BF9 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		ACC3981A20F27B4100434BF9 /* InputFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldType.swift; sourceTree = "<group>"; };
 		ACC3981C20F27B5B00434BF9 /* ChaneAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaneAction.swift; sourceTree = "<group>"; };
+		ACC3981E20F27C0000434BF9 /* MenuGroupEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGroupEditor.swift; sourceTree = "<group>"; };
 		ACD5756F20F17A01000EA7A2 /* ShortInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortInputTableViewCell.swift; sourceTree = "<group>"; };
 		ACD5757020F17A01000EA7A2 /* ShortInputTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShortInputTableViewCell.xib; sourceTree = "<group>"; };
 		ACD5757320F17D42000EA7A2 /* LongInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongInputTableViewCell.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				ACC3981820F27B2700434BF9 /* Setting.swift */,
 				ACC3981A20F27B4100434BF9 /* InputFieldType.swift */,
 				ACC3981C20F27B5B00434BF9 /* ChaneAction.swift */,
+				ACC3981E20F27C0000434BF9 /* MenuGroupEditor.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				ACF8C7DF20F028CE00752385 /* MenuItem.swift in Sources */,
 				ACC3981920F27B2700434BF9 /* Setting.swift in Sources */,
 				ACF8C7BD20F0272B00752385 /* ViewController.swift in Sources */,
+				ACC3981F20F27C0000434BF9 /* MenuGroupEditor.swift in Sources */,
 				AC7C48AE20F110B8004FA179 /* MenuGroupEditiorViewController.swift in Sources */,
 				ACF8C7BB20F0272B00752385 /* AppDelegate.swift in Sources */,
 				ACF8C7E120F028E000752385 /* MenuGroup.swift in Sources */,
