@@ -20,12 +20,21 @@ class MenuGroupEditor {
     weak var delegate: SettingPresentationDelegate? = nil
 
     var title: String {
-        return menuGroup?.title ?? "New Group"
+
+        let genericTitle = "New Group"
+
+        guard let _title = menuGroup?.title else {
+            return genericTitle
+        }
+
+        return _title.count > 0 ? _title : genericTitle
     }
 
     fileprivate let menuGroup: MenuGroup?
 
     private let moc: NSManagedObjectContext
+
+    private let isNew: Bool
 
     init(menuGroup: MenuGroup?) {
 
@@ -34,8 +43,10 @@ class MenuGroupEditor {
 
         if menuGroup == nil {
             self.menuGroup = MenuGroup(context: moc)
+            isNew = true
         } else {
             self.menuGroup = menuGroup
+            isNew = false
         }
 
         let titleSetting = Setting(title: "Title", inputFieldType: .small(keyboardType: .default))
@@ -53,6 +64,8 @@ class MenuGroupEditor {
             titleSetting.currentValue = action
         }
 
+        titleSetting.currentValue = SettingValue.string(newValue: menuGroup?.title)
+
         imageSetting.onChangeAction = {[weak self] (action) in
             if case .image(let image) = action {
                 print("title will be set to")
@@ -64,6 +77,18 @@ class MenuGroupEditor {
 
     func save() {
         try! moc.save()
+    }
+
+    func cancel() {
+
+        if !isNew {
+            moc.reset()
+            return
+        }
+
+        if let _menuGroup = menuGroup {
+            moc.delete(_menuGroup)
+        }
     }
 
 }

@@ -14,6 +14,7 @@ class MenuGroupViewController: UIViewController {
     @IBOutlet fileprivate weak var tableView: UITableView!
 
     fileprivate var frController: NSFetchedResultsController<MenuGroup>?
+    fileprivate var _editRowAction: UITableViewRowAction?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,14 +59,23 @@ class MenuGroupViewController: UIViewController {
         try! frController?.performFetch()
     }
 
-    @objc
-    fileprivate func addItem() {
+    fileprivate func showEditor(for group: MenuGroup?) {
         let editorVC = MenuGroupEditiorViewController(nibName: "MenuGroupEditiorViewController", bundle: nil)
 
+        let model = MenuGroupEditor(menuGroup: group)
+
+        editorVC.model = model
+
+        
         let navVC = UINavigationController()
         navVC.viewControllers = [editorVC]
 
         present(navVC, animated: true, completion: nil)
+    }
+
+    @objc
+    fileprivate func addItem() {
+        showEditor(for: nil)
     }
 
 }
@@ -76,7 +86,7 @@ extension MenuGroupViewController: UITableViewDataSource {
         return frController?.fetchedObjects?.count ?? 0
     }
 
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         guard let menuGroup = frController?.object(at: indexPath) else {
             fatalError("Fetched results controller must not be nil")
@@ -86,6 +96,21 @@ extension MenuGroupViewController: UITableViewDataSource {
 
         cell.configureFor(menuGroup: menuGroup)
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        return [editRowAction()]
+    }
+
+    func editRowAction() -> UITableViewRowAction {
+
+        if _editRowAction == nil {
+            _editRowAction = UITableViewRowAction(style: .normal, title: "Edit", handler: {[weak self] (action, indexPath) in
+                let menuGroup = self?.frController?.object(at: indexPath)
+                self?.showEditor(for: menuGroup)
+            })
+        }
+        return _editRowAction!
     }
 }
 

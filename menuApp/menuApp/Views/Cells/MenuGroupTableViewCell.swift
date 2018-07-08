@@ -19,6 +19,7 @@ class MenuGroupTableViewCell: UITableViewCell, CellFromNib {
 
     func configureFor(menuGroup: MenuGroup) {
         titleLabel.text = menuGroup.title
+        menuImageView.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
     }
     
 }

@@ -12,7 +12,7 @@ class MenuGroupEditiorViewController: UIViewController {
 
     @IBOutlet fileprivate weak var tableView: UITableView!
 
-    var model: MenuGroupEditor? = MenuGroupEditor(menuGroup: nil)
+    var model: MenuGroupEditor? // = MenuGroupEditor(menuGroup: nil)
     fileprivate var indexOfEditingImage: IndexPath? = nil
 
     override func viewDidLoad() {
@@ -23,8 +23,12 @@ class MenuGroupEditiorViewController: UIViewController {
     }
 
     fileprivate func setupNavigationBar() {
-        setTitle()
         configureBarButtons()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setTitle()
     }
 
     fileprivate func setupTableView() {
@@ -58,6 +62,7 @@ class MenuGroupEditiorViewController: UIViewController {
 
     @objc
     fileprivate func cancel() {
+        model?.cancel()
         self.dismiss(animated: true, completion: nil)
     }
 
@@ -106,6 +111,11 @@ extension MenuGroupEditiorViewController: UITableViewDataSource {
 
         cell.titleLabel.text = setting.title
         cell.inputField.keyboardType = keyboardType
+
+        if case .string(let value)? = setting.currentValue {
+            cell.inputField.text = value
+        }
+
         cell.delegate = self
 
         return cell
@@ -116,6 +126,9 @@ extension MenuGroupEditiorViewController: UITableViewDataSource {
                                     _ setting: Setting) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: LongInputTableViewCell.reuseIdentifier, for: indexPath) as! LongInputTableViewCell
         cell.titleLabel.text = setting.title
+        if case .string(let value)? = setting.currentValue {
+            cell.textView.text = value
+        }
         return cell
     }
 
