@@ -103,13 +103,13 @@ class MenuGroupEditor: ConfigurableObject {
     }
 
     func saveChanges() {
-        try! menuGroup.managedObjectContext?.save()
+        AppEnvironment.current.saveContext()
     }
 
     func discardChanges() {
 
         if !isNew {
-            menuGroup.managedObjectContext?.reset()
+            AppEnvironment.current.mainContext.reset()
             return
         }
         
@@ -120,7 +120,7 @@ class MenuGroupEditor: ConfigurableObject {
         if isNew {
             discardChanges()
         } else {
-            menuGroup.managedObjectContext?.delete(menuGroup)
+            AppEnvironment.current.mainContext.delete(menuGroup)
         }
         delegate?.dismiss()
     }

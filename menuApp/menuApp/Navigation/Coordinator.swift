@@ -37,8 +37,7 @@ class Coordinator {
     }
 
     fileprivate var moc: NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
+        return AppEnvironment.current.mainContext
     }
 
     fileprivate func showEditor(with model: ConfigurableObject) {

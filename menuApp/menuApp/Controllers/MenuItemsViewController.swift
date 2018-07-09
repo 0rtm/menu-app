@@ -66,9 +66,8 @@ class MenuItemsViewController: UIViewController, ViewControllerFromNib {
         guard let _menuGroup = menuGroup else {
             return
         }
-
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let moc = appDelegate.persistentContainer.viewContext
+        
+        let moc = AppEnvironment.current.mainContext
 
         let r =  NSFetchRequest<MenuItem>(entityName: "MenuItem")
         r.fetchBatchSize = 20

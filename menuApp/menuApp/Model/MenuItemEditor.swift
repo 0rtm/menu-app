@@ -80,12 +80,12 @@ class MenuItemEditor: ConfigurableObject {
     }
 
     func discardChanges() {
-        let moc = item.managedObjectContext
+        let moc = AppEnvironment.current.mainContext
         if isNew {
-            moc?.delete(item)
+            moc.delete(item)
             return
         }
-        moc?.reset()
+        moc.reset()
     }
 
     fileprivate func deleteOrDiscard() {
@@ -93,9 +93,8 @@ class MenuItemEditor: ConfigurableObject {
         if (isNew) {
             discardChanges()
         } else {
-            let moc = item.managedObjectContext
-            moc?.delete(item)
-            try! moc?.save()
+            AppEnvironment.current.mainContext.delete(item)
+            AppEnvironment.current.saveContext()
         }
 
         self.delegate?.dismiss()

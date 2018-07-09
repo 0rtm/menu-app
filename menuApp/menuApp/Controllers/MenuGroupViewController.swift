@@ -64,8 +64,7 @@ class MenuGroupViewController: UIViewController, ViewControllerFromNib {
 
     fileprivate func setupFetchedResultsController() {
 
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let moc = appDelegate.persistentContainer.viewContext
+        let moc = AppEnvironment.current.mainContext
 
         let r =  NSFetchRequest<MenuGroup>(entityName: "MenuGroup")
         r.fetchBatchSize = 20

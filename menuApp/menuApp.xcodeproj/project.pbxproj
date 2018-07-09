@@ -35,6 +35,8 @@
 		ACDDA19220F2F199006FF685 /* SettingActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACDDA19020F2F199006FF685 /* SettingActionTableViewCell.xib */; };
 		ACDDA19420F2F755006FF685 /* ViewControllerFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDDA19320F2F755006FF685 /* ViewControllerFromNib.swift */; };
 		ACDDA19720F2FB30006FF685 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDDA19620F2FB30006FF685 /* Coordinator.swift */; };
+		ACDDA19920F30953006FF685 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDDA19820F30953006FF685 /* AppEnvironment.swift */; };
+		ACDDA19B20F309EE006FF685 /* DefaultEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDDA19A20F309EE006FF685 /* DefaultEnvironment.swift */; };
 		ACF8C7BB20F0272B00752385 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF8C7BA20F0272B00752385 /* AppDelegate.swift */; };
 		ACF8C7C020F0272B00752385 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACF8C7BE20F0272B00752385 /* Main.storyboard */; };
 		ACF8C7C320F0272B00752385 /* menuApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACF8C7C120F0272B00752385 /* menuApp.xcdatamodeld */; };
@@ -84,6 +86,8 @@
 		ACDDA19020F2F199006FF685 /* SettingActionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingActionTableViewCell.xib; sourceTree = "<group>"; };
 		ACDDA19320F2F755006FF685 /* ViewControllerFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFromNib.swift; sourceTree = "<group>"; };
 		ACDDA19620F2FB30006FF685 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		ACDDA19820F30953006FF685 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		ACDDA19A20F309EE006FF685 /* DefaultEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultEnvironment.swift; sourceTree = "<group>"; };
 		ACF8C7B720F0272B00752385 /* menuApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = menuApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACF8C7BA20F0272B00752385 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACF8C7BF20F0272B00752385 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -184,6 +188,15 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		ACDDA19C20F30A09006FF685 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				ACDDA19820F30953006FF685 /* AppEnvironment.swift */,
+				ACDDA19A20F309EE006FF685 /* DefaultEnvironment.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
 		ACF8C7AE20F0272B00752385 = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +218,7 @@
 		ACF8C7B920F0272B00752385 /* menuApp */ = {
 			isa = PBXGroup;
 			children = (
+				ACDDA19C20F30A09006FF685 /* Environment */,
 				AC9D2E7520F25F2B000E9352 /* Extensions */,
 				ACD5756D20F179D1000EA7A2 /* Views */,
 				AC7C48AA20F10B1D004FA179 /* Controllers */,
@@ -356,7 +370,9 @@
 				ACF8C7C320F0272B00752385 /* menuApp.xcdatamodeld in Sources */,
 				ACF8C7DF20F028CE00752385 /* MenuItem.swift in Sources */,
 				AC4CFDE920F2C17A0034B288 /* MenuItemEditor.swift in Sources */,
+				ACDDA19B20F309EE006FF685 /* DefaultEnvironment.swift in Sources */,
 				AC4CFDEB20F2C19F0034B288 /* SettingPresentationDelegate.swift in Sources */,
+				ACDDA19920F30953006FF685 /* AppEnvironment.swift in Sources */,
 				ACC3981920F27B2700434BF9 /* Setting.swift in Sources */,
 				AC4CFDE620F2BFB10034B288 /* MenuItemTableViewCell.swift in Sources */,
 				ACDDA19720F2FB30006FF685 /* Coordinator.swift in Sources */,
