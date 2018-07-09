@@ -43,6 +43,7 @@ class Coordinator {
     fileprivate func showEditor(with model: ConfigurableObject) {
         let editor = editorVC
         editor.model = model
+        editor.delegate = self
 
         let editorInNav = navigationController(with: editor)
         self.rootViewController.present(editorInNav, animated: true, completion: nil)
@@ -89,4 +90,11 @@ extension Coordinator: MenuItemsViewControllerDelegate {
         showEditor(with: model)
     }
 
+}
+
+extension Coordinator: EditorViewControllerDelegate {
+
+    func done() {
+        rootViewController.dismiss(animated: true, completion: nil)
+    }
 }

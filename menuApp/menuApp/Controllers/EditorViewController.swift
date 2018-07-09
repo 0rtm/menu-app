@@ -8,11 +8,17 @@
 
 import UIKit
 
-class EditorViewController: UIViewController, ViewControllerFromNib {
+protocol EditorViewControllerDelegate: class {
+    func done()
+}
+
+final class EditorViewController: UIViewController, ViewControllerFromNib {
 
     @IBOutlet fileprivate weak var tableView: UITableView!
 
-    var model: ConfigurableObject?
+    var model: ConfigurableObject? = nil
+    weak var delegate: EditorViewControllerDelegate? = nil
+
     fileprivate var indexOfEditingImage: IndexPath? = nil
     fileprivate var saveButton: UIBarButtonItem!
 
@@ -30,6 +36,12 @@ class EditorViewController: UIViewController, ViewControllerFromNib {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setTitle()
+        startObservingKeyboard()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopObservingKeyboard()
     }
 
     fileprivate func setupTableView() {
@@ -39,6 +51,7 @@ class EditorViewController: UIViewController, ViewControllerFromNib {
         tableView.register(SettingActionTableViewCell.nib, forCellReuseIdentifier: SettingActionTableViewCell.reuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.keyboardDismissMode = .onDrag
         tableView.estimatedRowHeight = 70
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView()
@@ -57,16 +70,42 @@ class EditorViewController: UIViewController, ViewControllerFromNib {
         self.navigationItem.leftBarButtonItem = cancelButton
     }
 
+    fileprivate func startObservingKeyboard() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
+    }
+
+    fileprivate func stopObservingKeyboard() {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    @objc
+    fileprivate func keyboardWillShow(notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            tableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+        }
+    }
+
+    @objc
+    fileprivate func keyboardWillHide(notification: Notification) {
+        tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+    }
+
+    @objc
+    func dismissKeyboard () {
+        self.view.endEditing(true)
+    }
+
     @objc
     fileprivate func save() {
         model?.saveChanges()
-        self.dismiss(animated: true, completion: nil)
+        delegate?.done()
     }
 
     @objc
     fileprivate func cancel() {
         model?.discardChanges()
-        self.dismiss(animated: true, completion: nil)
+        delegate?.done()
     }
 
     fileprivate func updateImageSetting(_ image: UIImage?, at indexPath: IndexPath) {
@@ -201,7 +240,7 @@ extension EditorViewController: UITableViewDataSource {
         cell.delegate = self
 
         if case .image(let image)? = setting.currentValue {
-            cell.imagePreviewView?.image = image
+            cell.setPreviewImage(image)
         }
 
         return cell
@@ -224,6 +263,10 @@ extension EditorViewController: UITableViewDelegate {
 
 extension EditorViewController: SettingPresentationDelegate {
 
+    func updateTitle() {
+        self.setTitle()
+    }
+
     func dismiss() {
         dismiss(animated: true, completion: nil)
     }
@@ -241,20 +284,28 @@ extension EditorViewController: SettingPresentationDelegate {
         for (sectionIndex, section) in sections.enumerated() {
 
             guard case .settings(let settins) = section else {
-                break
+                continue
             }
 
             guard let indexOfSetting = settins.index(of: setting) else {
-                break
+                continue
             }
 
             let indexPath = IndexPath(row: indexOfSetting, section: sectionIndex)
             tableView.reloadRows(at: [indexPath], with: .automatic)
+            return
         }
     }
 }
 
 extension EditorViewController: InputCellDelegate {
+
+    func editingBegin(inCell cell: UITableViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else {
+            return
+        }
+        tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
+    }
 
     func inputChanged(to value: String?, inCell cell: UITableViewCell) {
 

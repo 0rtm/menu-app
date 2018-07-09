@@ -35,11 +35,6 @@ class MenuItemsViewController: UIViewController, ViewControllerFromNib {
         setupFetchedResultsController()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.reloadData()
-    }
-
     fileprivate func setupNavigationBar() {
         setTitle()
         configureBarButtons()
@@ -164,8 +159,11 @@ extension MenuItemsViewController: NSFetchedResultsControllerDelegate {
         case .update:
             guard let indexPath = indexPath else { fatalError("Index path should be not nil") }
             tableView.reloadRows(at: [indexPath], with: .automatic)
-        default:
-            break
+        case .move:
+            guard let indexPath = indexPath else { fatalError("Index path should be not nil") }
+            guard let newIndexPath = newIndexPath else { fatalError("New index path should be not nil") }
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
         }
     }
 
