@@ -186,6 +186,7 @@ extension EditorViewController: UITableViewDataSource {
                                     _ setting: Setting) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: LongInputTableViewCell.reuseIdentifier, for: indexPath) as! LongInputTableViewCell
         cell.titleLabel.text = setting.title
+        cell.delegate = self
         if case .string(let value)? = setting.currentValue {
             cell.textView.text = value
         }

@@ -39,9 +39,10 @@ class MenuItemEditor: ConfigurableObject {
 
         let titleSetting = Setting(title: "Title", inputFieldType: .small(keyboardType: .default))
         let priceSetting = Setting(title: "Price", inputFieldType: .small(keyboardType: .decimalPad))
+        let descriptionSetting = Setting(title: "Description", inputFieldType: .large)
         let imageSetting = Setting(title: "Image", inputFieldType: .image)
 
-        settings = [titleSetting, priceSetting, imageSetting]
+        settings = [titleSetting, priceSetting, descriptionSetting, imageSetting]
 
         let deleteAction = Action(title: "Delete")
         actions = [deleteAction]
@@ -67,6 +68,16 @@ class MenuItemEditor: ConfigurableObject {
 
             priceSetting?.currentValue = action
             self.delegate?.updateCanSave(canSave: self.canSave)
+        }
+
+        descriptionSetting.currentValue = SettingValue.string(value: item.info)
+        descriptionSetting.onChangeAction = {[unowned self, weak descriptionSetting] action in
+            if case .string(let value) = action {
+                guard let newInfo = value else { return }
+                self.item.info = newInfo
+            }
+
+            descriptionSetting?.currentValue = action
         }
 
         deleteAction.onAction = {[weak self] in

@@ -12,7 +12,7 @@ import UIKit
 public class MenuItem: NSManagedObject {
 
     @NSManaged var title: String
-    @NSManaged var info: String
+    @NSManaged var info: String?
     @NSManaged var price: NSDecimalNumber
     @NSManaged var imageData: Data?
     @NSManaged var group: MenuGroup?
