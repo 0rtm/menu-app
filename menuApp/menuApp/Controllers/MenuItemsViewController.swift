@@ -95,6 +95,21 @@ extension MenuItemsViewController: UITableViewDataSource {
         return MenuItemTableViewCell.defaultHeight
     }
 
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let object = fetchedResultsController?.object(at: indexPath) else {
+                return
+            }
+            let moc = object.managedObjectContext
+            moc?.delete(object)
+            try! moc?.save()
+        }
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         guard let menuItem = fetchedResultsController?.object(at: indexPath) else {
