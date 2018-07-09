@@ -12,6 +12,7 @@ import UIKit
 public class MenuGroup: NSManagedObject {
 
     @NSManaged var title: String
+    @NSManaged var info: String?
     @NSManaged var imageData: Data?
     @NSManaged var items: Set<MenuItem>?
 
