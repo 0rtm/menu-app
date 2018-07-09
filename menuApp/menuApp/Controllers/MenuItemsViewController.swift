@@ -65,22 +65,24 @@ class MenuItemsViewController: UIViewController {
         tableView.reloadData()
     }
 
-    @objc
-    fileprivate func addItem() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    fileprivate func showEditor(forItem item: MenuItem, isNew: Bool) {
         let editorVC = MenuGroupEditiorViewController(nibName: "MenuGroupEditiorViewController", bundle: nil)
-        let moc = appDelegate.persistentContainer.viewContext
-
-        let item = MenuItem(context: moc)
-
-        let model = MenuItemEditor(item: item, isNew: true)//MenuGroupEditor(menuGroup: group)
-
+        let model = MenuItemEditor(item: item, isNew: isNew)
         editorVC.model = model
 
         let navVC = UINavigationController()
         navVC.viewControllers = [editorVC]
 
         present(navVC, animated: true, completion: nil)
+    }
+
+    @objc
+    fileprivate func addItem() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let moc = appDelegate.persistentContainer.viewContext
+
+        let item = MenuItem(context: moc)
+        showEditor(forItem: item, isNew: true)
     }
     
 }
@@ -128,6 +130,11 @@ extension MenuItemsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+
+        guard let item = fetchedResultsController?.object(at: indexPath) else {
+            return
+        }
+        showEditor(forItem: item, isNew: false)
     }
 }
 

@@ -15,6 +15,7 @@ class MenuGroupViewController: UIViewController {
 
     fileprivate var fetchedResultsController: NSFetchedResultsController<MenuGroup>?
     fileprivate var _editRowAction: UITableViewRowAction?
+    fileprivate var _deleteRowAction: UITableViewRowAction?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +108,7 @@ extension MenuGroupViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        return [editRowAction()]
+        return [deleteRowAction(), editRowAction()]
     }
 
     func editRowAction() -> UITableViewRowAction {
@@ -120,6 +121,21 @@ extension MenuGroupViewController: UITableViewDataSource {
         }
         return _editRowAction!
     }
+
+    func deleteRowAction() -> UITableViewRowAction {
+
+        if _deleteRowAction == nil {
+            _deleteRowAction = UITableViewRowAction(style: .destructive, title: "Delete", handler: {[unowned self] (action, indexPath) in
+                guard let menuGroup = self.fetchedResultsController?.object(at: indexPath) else {
+                    return
+                }
+                let moc = menuGroup.managedObjectContext
+                moc?.delete(menuGroup)
+                try! moc?.save()
+            })
+        }
+        return _deleteRowAction!
+    }
 }
 
 extension MenuGroupViewController: UITableViewDelegate {
@@ -131,7 +147,6 @@ extension MenuGroupViewController: UITableViewDelegate {
             return
         }
 
-        //let model =
         let vc = MenuItemsViewController()
         vc.menuGroup = menuGroup
         self.navigationController?.pushViewController(vc, animated: true)
