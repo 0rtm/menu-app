@@ -9,6 +9,7 @@
 import UIKit
 
 protocol InputCellDelegate: class {
+    func editingBegin(inCell: UITableViewCell)
     func inputChanged(to: String?, inCell: UITableViewCell)
 }
 
@@ -26,6 +27,10 @@ class ShortInputTableViewCell: UITableViewCell, CellFromNib {
 
     @IBAction func inputChanged(_ sender: Any) {
         delegate?.inputChanged(to: inputField.text, inCell: self)
+    }
+
+    @IBAction func editingDidBegin(_ sender: Any) {
+        delegate?.editingBegin(inCell: self)
     }
 
 }

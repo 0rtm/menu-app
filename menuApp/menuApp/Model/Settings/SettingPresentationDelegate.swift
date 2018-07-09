@@ -10,6 +10,7 @@ import Foundation
 
 protocol SettingPresentationDelegate: class {
     func update(setting: Setting)
+    func updateTitle()
     func updateCanSave(canSave: Bool)
     func dismiss()
 }

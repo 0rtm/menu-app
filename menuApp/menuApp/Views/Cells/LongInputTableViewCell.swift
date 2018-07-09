@@ -31,5 +31,9 @@ extension LongInputTableViewCell: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         delegate?.inputChanged(to: textView.text, inCell: self)
     }
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        delegate?.editingBegin(inCell: self)
+    }
 }
 

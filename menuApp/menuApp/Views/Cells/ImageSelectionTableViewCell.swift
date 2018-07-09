@@ -16,12 +16,22 @@ protocol ImageSelectionCellDelegate: class {
 class ImageSelectionTableViewCell: UITableViewCell, CellFromNib {
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var imagePreviewView: UIImageView!
+    @IBOutlet fileprivate weak var imagePreviewView: UIImageView!
 
     weak var delegate: ImageSelectionCellDelegate?
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        imagePreviewView.backgroundColor = UIColor.imagePlaceholderColor
+    }
+
     override func prepareForReuse() {
         self.delegate = nil
+    }
+
+    func setPreviewImage(_ image: UIImage?) {
+        imagePreviewView.backgroundColor = image == nil ? UIColor.imagePlaceholderColor: UIColor.clear
+        imagePreviewView.image = image
     }
 
     @IBAction func updateImage(_ sender: Any) {

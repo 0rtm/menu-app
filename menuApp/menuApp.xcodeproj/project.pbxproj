@@ -143,6 +143,17 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		AC915C4720F407F300654A88 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AC4CFDEA20F2C19F0034B288 /* SettingPresentationDelegate.swift */,
+				ACC3981820F27B2700434BF9 /* Setting.swift */,
+				ACC3981A20F27B4100434BF9 /* InputFieldType.swift */,
+				ACC3981C20F27B5B00434BF9 /* SettingValue.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		AC9D2E7520F25F2B000E9352 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,13 +256,10 @@
 		ACF8C7DD20F028B200752385 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AC915C4720F407F300654A88 /* Settings */,
 				AC7C48AB20F10B2D004FA179 /* CoreData */,
-				ACC3981820F27B2700434BF9 /* Setting.swift */,
-				ACC3981A20F27B4100434BF9 /* InputFieldType.swift */,
-				ACC3981C20F27B5B00434BF9 /* SettingValue.swift */,
 				ACC3981E20F27C0000434BF9 /* MenuGroupEditor.swift */,
 				AC4CFDE820F2C17A0034B288 /* MenuItemEditor.swift */,
-				AC4CFDEA20F2C19F0034B288 /* SettingPresentationDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

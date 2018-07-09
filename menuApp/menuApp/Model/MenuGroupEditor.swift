@@ -46,7 +46,7 @@ class MenuGroupEditor: ConfigurableObject {
     weak var delegate: SettingPresentationDelegate? = nil
 
     var title: String {
-        return menuGroup.title.count > 0 ? menuGroup.title : "New Group"
+        return isNew ? "New Group" : menuGroup.title
     }
 
     var canSave: Bool {
@@ -82,6 +82,7 @@ class MenuGroupEditor: ConfigurableObject {
             }
             titleSetting?.currentValue = action
             self.delegate?.updateCanSave(canSave: self.canSave)
+            self.delegate?.updateTitle()
         }
 
         titleSetting.currentValue = SettingValue.string(value: menuGroup.title)
@@ -109,7 +110,7 @@ class MenuGroupEditor: ConfigurableObject {
     func discardChanges() {
 
         if !isNew {
-            AppEnvironment.current.mainContext.reset()
+            AppEnvironment.current.mainContext.rollback()
             return
         }
         

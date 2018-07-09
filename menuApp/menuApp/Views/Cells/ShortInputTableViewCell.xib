@@ -30,8 +30,9 @@
                         <rect key="frame" x="72" y="38.5" width="222" height="30"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         <connections>
+                            <action selector="editingDidBegin:" destination="KGk-i7-Jjw" eventType="editingDidBegin" id="pYa-6b-DGH"/>
                             <action selector="inputChanged:" destination="KGk-i7-Jjw" eventType="editingChanged" id="h2o-EV-SoT"/>
                         </connections>
                     </textField>

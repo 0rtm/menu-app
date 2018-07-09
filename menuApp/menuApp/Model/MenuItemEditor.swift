@@ -22,7 +22,7 @@ class MenuItemEditor: ConfigurableObject {
     weak var delegate: SettingPresentationDelegate?
     
     var title: String {
-        return item.title.count > 0 ? item.title : "New Item"
+        return isNew ? "New Item" : item.title
     }
 
     fileprivate let item: MenuItem
@@ -57,31 +57,38 @@ class MenuItemEditor: ConfigurableObject {
             }
             titleSetting?.currentValue = action
             self.delegate?.updateCanSave(canSave: self.canSave)
+            self.delegate?.updateTitle()
         }
 
         priceSetting.currentValue = SettingValue.string(value: item.price.stringValue)
-        priceSetting.onChangeAction = {[unowned self, weak priceSetting] action in
+        priceSetting.onChangeAction = {[unowned self, unowned priceSetting] action in
             if case .string(let value) = action {
                 guard let newPrice = value else { return }
                 self.item.price = NSDecimalNumber(string: newPrice)
             }
 
-            priceSetting?.currentValue = action
+            priceSetting.currentValue = action
             self.delegate?.updateCanSave(canSave: self.canSave)
         }
 
         descriptionSetting.currentValue = SettingValue.string(value: item.info)
-        descriptionSetting.onChangeAction = {[unowned self, weak descriptionSetting] action in
+        descriptionSetting.onChangeAction = {[unowned self, unowned descriptionSetting] action in
             if case .string(let value) = action {
                 guard let newInfo = value else { return }
                 self.item.info = newInfo
             }
 
-            descriptionSetting?.currentValue = action
+            descriptionSetting.currentValue = action
         }
 
         deleteAction.onAction = {[weak self] in
             self?.deleteOrDiscard()
+        }
+
+        imageSetting.currentValue = SettingValue.image(value: item.image)
+        imageSetting.onChangeAction = {[unowned self, unowned imageSetting] action in
+
+    
         }
     }
 
@@ -96,7 +103,7 @@ class MenuItemEditor: ConfigurableObject {
             moc.delete(item)
             return
         }
-        moc.reset()
+        moc.rollback()
     }
 
     fileprivate func deleteOrDiscard() {
