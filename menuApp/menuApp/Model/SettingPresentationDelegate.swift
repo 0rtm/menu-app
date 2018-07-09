@@ -11,4 +11,5 @@ import Foundation
 protocol SettingPresentationDelegate: class {
     func update(setting: Setting)
     func updateCanSave(canSave: Bool)
+    func dismiss()
 }

@@ -9,7 +9,15 @@
 import UIKit
 import CoreData
 
+protocol MenuGroupViewControllerDelegate: class {
+    func addNewGroup()
+    func selected(menuGroup: MenuGroup)
+    func edit(menuGroup: MenuGroup)
+}
+
 class MenuGroupViewController: UIViewController, ViewControllerFromNib {
+
+    weak var delegate: MenuGroupViewControllerDelegate? = nil
 
     @IBOutlet fileprivate weak var tableView: UITableView!
 
@@ -22,6 +30,11 @@ class MenuGroupViewController: UIViewController, ViewControllerFromNib {
         setupNavigationBar()
         setupTableView()
         setupFetchedResultsController()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 
     fileprivate func setupNavigationBar() {
@@ -64,27 +77,9 @@ class MenuGroupViewController: UIViewController, ViewControllerFromNib {
         tableView.reloadData()
     }
 
-    fileprivate var editorVC: EditorViewController {
-        return EditorViewController.fromNib()
-    }
-
-    fileprivate func showEditor(for group: MenuGroup?) {
-
-        let _editorVC = editorVC
-        let model = MenuGroupEditor(menuGroup: group)
-
-        _editorVC.model = model
-
-        
-        let navVC = UINavigationController()
-        navVC.viewControllers = [_editorVC]
-
-        present(navVC, animated: true, completion: nil)
-    }
-
     @objc
     fileprivate func addItem() {
-        showEditor(for: nil)
+        delegate?.addNewGroup()
     }
 
 }
@@ -115,8 +110,9 @@ extension MenuGroupViewController: UITableViewDataSource {
 
         if _editRowAction == nil {
             _editRowAction = UITableViewRowAction(style: .normal, title: "Edit", handler: {[unowned self] (action, indexPath) in
-                let menuGroup = self.fetchedResultsController?.object(at: indexPath)
-                self.showEditor(for: menuGroup)
+                if let menuGroup = self.fetchedResultsController?.object(at: indexPath) {
+                    self.delegate?.edit(menuGroup: menuGroup)
+                }
             })
         }
         return _editRowAction!
@@ -147,9 +143,7 @@ extension MenuGroupViewController: UITableViewDelegate {
             return
         }
 
-        let vc = MenuItemsViewController()
-        vc.menuGroup = menuGroup
-        self.navigationController?.pushViewController(vc, animated: true)
+        delegate?.selected(menuGroup: menuGroup)
     }
 }
 

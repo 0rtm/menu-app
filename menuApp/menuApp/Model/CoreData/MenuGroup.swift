@@ -13,6 +13,7 @@ public class MenuGroup: NSManagedObject {
 
     @NSManaged var title: String
     @NSManaged var imageData: Data?
+    @NSManaged var items: Set<MenuItem>?
 
     var image: UIImage? {
 

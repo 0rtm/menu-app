@@ -16,7 +16,6 @@ enum SettingSection {
     case actions(actions: [Action])
 }
 
-
 class Action {
     let title: String
     var onAction: (()->())? = nil
@@ -47,43 +46,21 @@ class MenuGroupEditor: ConfigurableObject {
     weak var delegate: SettingPresentationDelegate? = nil
 
     var title: String {
-
-        let genericTitle = "New Group"
-
-        guard let _title = menuGroup?.title else {
-            return genericTitle
-        }
-
-        return _title.count > 0 ? _title : genericTitle
+        return menuGroup.title.count > 0 ? menuGroup.title : "New Group"
     }
 
     var canSave: Bool {
-
-        guard let titleLen = menuGroup?.title.count else {
-            return false
-        }
-
-        return titleLen > 0
+        return menuGroup.title.count > 0
     }
 
-    fileprivate let menuGroup: MenuGroup?
-
-    private let moc: NSManagedObjectContext
+    fileprivate let menuGroup: MenuGroup
 
     private let isNew: Bool
 
-    init(menuGroup group: MenuGroup?) {
+    init(menuGroup group: MenuGroup, isNew: Bool) {
 
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        moc = appDelegate.persistentContainer.viewContext
-
-        if group == nil {
-            self.menuGroup = MenuGroup(context: moc)
-            isNew = true
-        } else {
-            self.menuGroup = group
-            isNew = false
-        }
+        self.menuGroup = group
+        self.isNew = isNew
 
         let titleSetting = Setting(title: "Title", inputFieldType: .small(keyboardType: .default))
         let imageSetting = Setting(title: "Image", inputFieldType: .image)
@@ -101,44 +78,51 @@ class MenuGroupEditor: ConfigurableObject {
             if case .string(let value) = action {
 
                 guard let newTitle = value else { return }
-                self.menuGroup?.title = newTitle
+                self.menuGroup.title = newTitle
             }
             titleSetting?.currentValue = action
             self.delegate?.updateCanSave(canSave: self.canSave)
         }
 
-        titleSetting.currentValue = SettingValue.string(value: menuGroup?.title)
+        titleSetting.currentValue = SettingValue.string(value: menuGroup.title)
 
         imageSetting.onChangeAction = {[weak self, weak imageSetting]  (action) in
             if case .image(let image) = action {
-                self?.menuGroup?.image = image
+                self?.menuGroup.image = image
             }
             imageSetting?.currentValue = action
             if let _imageSetting = imageSetting {
                 self?.delegate?.update(setting: _imageSetting)
             }
         }
-        imageSetting.currentValue = SettingValue.image(value: menuGroup?.image)
+        imageSetting.currentValue = SettingValue.image(value: menuGroup.image)
 
         deleteAction.onAction = {[weak self] in
-            print("will delete")
+            self?.deleteOrDiscard()
         }
     }
 
     func saveChanges() {
-        try! moc.save()
+        try! menuGroup.managedObjectContext?.save()
     }
 
     func discardChanges() {
 
         if !isNew {
-            moc.reset()
+            menuGroup.managedObjectContext?.reset()
             return
         }
+        
+        menuGroup.managedObjectContext?.delete(menuGroup)
+    }
 
-        if let _menuGroup = menuGroup {
-            moc.delete(_menuGroup)
+    fileprivate func deleteOrDiscard() {
+        if isNew {
+            discardChanges()
+        } else {
+            menuGroup.managedObjectContext?.delete(menuGroup)
         }
+        delegate?.dismiss()
     }
 
 }

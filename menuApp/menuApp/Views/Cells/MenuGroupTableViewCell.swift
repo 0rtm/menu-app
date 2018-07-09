@@ -26,8 +26,6 @@ class MenuGroupTableViewCell: UITableViewCell, CellFromNib {
         } else {
             menuImageView.backgroundColor = UIColor.imagePlaceholderColor
         }
-
-
     }
     
 }

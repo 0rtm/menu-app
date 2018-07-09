@@ -34,8 +34,8 @@
 		ACDDA19120F2F199006FF685 /* SettingActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDDA18F20F2F199006FF685 /* SettingActionTableViewCell.swift */; };
 		ACDDA19220F2F199006FF685 /* SettingActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACDDA19020F2F199006FF685 /* SettingActionTableViewCell.xib */; };
 		ACDDA19420F2F755006FF685 /* ViewControllerFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDDA19320F2F755006FF685 /* ViewControllerFromNib.swift */; };
+		ACDDA19720F2FB30006FF685 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDDA19620F2FB30006FF685 /* Coordinator.swift */; };
 		ACF8C7BB20F0272B00752385 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF8C7BA20F0272B00752385 /* AppDelegate.swift */; };
-		ACF8C7BD20F0272B00752385 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF8C7BC20F0272B00752385 /* ViewController.swift */; };
 		ACF8C7C020F0272B00752385 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACF8C7BE20F0272B00752385 /* Main.storyboard */; };
 		ACF8C7C320F0272B00752385 /* menuApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACF8C7C120F0272B00752385 /* menuApp.xcdatamodeld */; };
 		ACF8C7C520F0272C00752385 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACF8C7C420F0272C00752385 /* Assets.xcassets */; };
@@ -83,9 +83,9 @@
 		ACDDA18F20F2F199006FF685 /* SettingActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingActionTableViewCell.swift; sourceTree = "<group>"; };
 		ACDDA19020F2F199006FF685 /* SettingActionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingActionTableViewCell.xib; sourceTree = "<group>"; };
 		ACDDA19320F2F755006FF685 /* ViewControllerFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFromNib.swift; sourceTree = "<group>"; };
+		ACDDA19620F2FB30006FF685 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		ACF8C7B720F0272B00752385 /* menuApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = menuApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACF8C7BA20F0272B00752385 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ACF8C7BC20F0272B00752385 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ACF8C7BF20F0272B00752385 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ACF8C7C220F0272B00752385 /* menuApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = menuApp.xcdatamodel; sourceTree = "<group>"; };
 		ACF8C7C420F0272C00752385 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -176,6 +176,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		ACDDA19520F2FB1C006FF685 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				ACDDA19620F2FB30006FF685 /* Coordinator.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		ACF8C7AE20F0272B00752385 = {
 			isa = PBXGroup;
 			children = (
@@ -201,8 +209,8 @@
 				ACD5756D20F179D1000EA7A2 /* Views */,
 				AC7C48AA20F10B1D004FA179 /* Controllers */,
 				ACF8C7DD20F028B200752385 /* Model */,
+				ACDDA19520F2FB1C006FF685 /* Navigation */,
 				ACF8C7BA20F0272B00752385 /* AppDelegate.swift */,
-				ACF8C7BC20F0272B00752385 /* ViewController.swift */,
 				ACF8C7BE20F0272B00752385 /* Main.storyboard */,
 				ACF8C7C420F0272C00752385 /* Assets.xcassets */,
 				ACF8C7C620F0272C00752385 /* LaunchScreen.storyboard */,
@@ -351,7 +359,7 @@
 				AC4CFDEB20F2C19F0034B288 /* SettingPresentationDelegate.swift in Sources */,
 				ACC3981920F27B2700434BF9 /* Setting.swift in Sources */,
 				AC4CFDE620F2BFB10034B288 /* MenuItemTableViewCell.swift in Sources */,
-				ACF8C7BD20F0272B00752385 /* ViewController.swift in Sources */,
+				ACDDA19720F2FB30006FF685 /* Coordinator.swift in Sources */,
 				ACC3981F20F27C0000434BF9 /* MenuGroupEditor.swift in Sources */,
 				AC7C48AE20F110B8004FA179 /* EditorViewController.swift in Sources */,
 				ACDDA19420F2F755006FF685 /* ViewControllerFromNib.swift in Sources */,

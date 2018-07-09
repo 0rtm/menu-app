@@ -9,11 +9,17 @@
 import UIKit
 import CoreData
 
-class MenuItemsViewController: UIViewController {
+protocol MenuItemsViewControllerDelegate: class {
+    func newMenuItem(inGroup: MenuGroup)
+    func editMenuItem(menuItem: MenuItem)
+}
+
+class MenuItemsViewController: UIViewController, ViewControllerFromNib {
 
     @IBOutlet weak var tableView: UITableView!
     fileprivate var fetchedResultsController: NSFetchedResultsController<MenuItem>?
 
+    weak var delegate: MenuItemsViewControllerDelegate? = nil
     var menuGroup: MenuGroup? = nil
 
     fileprivate lazy var currencyNumberFormatter: NumberFormatter = {
@@ -27,6 +33,11 @@ class MenuItemsViewController: UIViewController {
         setupNavigationBar()
         setupTableView()
         setupFetchedResultsController()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 
     fileprivate func setupNavigationBar() {
@@ -52,12 +63,17 @@ class MenuItemsViewController: UIViewController {
 
     fileprivate func setupFetchedResultsController() {
 
+        guard let _menuGroup = menuGroup else {
+            return
+        }
+
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let moc = appDelegate.persistentContainer.viewContext
 
         let r =  NSFetchRequest<MenuItem>(entityName: "MenuItem")
         r.fetchBatchSize = 20
         r.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        r.predicate = NSPredicate(format:"group = %@", _menuGroup)
 
         fetchedResultsController = NSFetchedResultsController(fetchRequest: r, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController?.delegate = self
@@ -65,24 +81,14 @@ class MenuItemsViewController: UIViewController {
         tableView.reloadData()
     }
 
-    fileprivate func showEditor(forItem item: MenuItem, isNew: Bool) {
-        let editorVC = EditorViewController.fromNib()
-        let model = MenuItemEditor(item: item, isNew: isNew)
-        editorVC.model = model
-
-        let navVC = UINavigationController()
-        navVC.viewControllers = [editorVC]
-
-        present(navVC, animated: true, completion: nil)
-    }
-
     @objc
     fileprivate func addItem() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let moc = appDelegate.persistentContainer.viewContext
 
-        let item = MenuItem(context: moc)
-        showEditor(forItem: item, isNew: true)
+        guard let group = menuGroup else {
+            return
+        }
+        
+        delegate?.newMenuItem(inGroup: group)
     }
     
 }
@@ -134,7 +140,7 @@ extension MenuItemsViewController: UITableViewDelegate {
         guard let item = fetchedResultsController?.object(at: indexPath) else {
             return
         }
-        showEditor(forItem: item, isNew: false)
+        delegate?.editMenuItem(menuItem: item)
     }
 }
 

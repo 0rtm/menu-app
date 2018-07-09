@@ -223,6 +223,10 @@ extension EditorViewController: UITableViewDelegate {
 
 extension EditorViewController: SettingPresentationDelegate {
 
+    func dismiss() {
+        dismiss(animated: true, completion: nil)
+    }
+
     func updateCanSave(canSave: Bool) {
         saveButton.isEnabled = canSave
     }

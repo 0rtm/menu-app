@@ -68,6 +68,10 @@ class MenuItemEditor: ConfigurableObject {
             priceSetting?.currentValue = action
             self.delegate?.updateCanSave(canSave: self.canSave)
         }
+
+        deleteAction.onAction = {[weak self] in
+            self?.deleteOrDiscard()
+        }
     }
 
     func saveChanges() {
@@ -82,6 +86,20 @@ class MenuItemEditor: ConfigurableObject {
             return
         }
         moc?.reset()
+    }
+
+    fileprivate func deleteOrDiscard() {
+
+        if (isNew) {
+            discardChanges()
+        } else {
+            let moc = item.managedObjectContext
+            moc?.delete(item)
+            try! moc?.save()
+        }
+
+        self.delegate?.dismiss()
+
     }
 
 }

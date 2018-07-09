@@ -15,6 +15,7 @@ public class MenuItem: NSManagedObject {
     @NSManaged var info: String
     @NSManaged var price: NSDecimalNumber
     @NSManaged var imageData: Data?
+    @NSManaged var group: MenuGroup?
 
     var image: UIImage? {
 
