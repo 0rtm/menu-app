@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuGroupEditiorViewController: UIViewController {
+class EditorViewController: UIViewController, ViewControllerFromNib {
 
     @IBOutlet fileprivate weak var tableView: UITableView!
 
@@ -104,7 +104,7 @@ class MenuGroupEditiorViewController: UIViewController {
     }
 }
 
-extension MenuGroupEditiorViewController: UITableViewDataSource {
+extension EditorViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return model?.sections.count ?? 0
@@ -207,7 +207,7 @@ extension MenuGroupEditiorViewController: UITableViewDataSource {
     }
 }
 
-extension MenuGroupEditiorViewController: UITableViewDelegate {
+extension EditorViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
@@ -221,7 +221,7 @@ extension MenuGroupEditiorViewController: UITableViewDelegate {
 
 }
 
-extension MenuGroupEditiorViewController: SettingPresentationDelegate {
+extension EditorViewController: SettingPresentationDelegate {
 
     func updateCanSave(canSave: Bool) {
         saveButton.isEnabled = canSave
@@ -249,7 +249,7 @@ extension MenuGroupEditiorViewController: SettingPresentationDelegate {
     }
 }
 
-extension MenuGroupEditiorViewController: InputCellDelegate {
+extension EditorViewController: InputCellDelegate {
 
     func inputChanged(to value: String?, inCell cell: UITableViewCell) {
 
@@ -261,7 +261,7 @@ extension MenuGroupEditiorViewController: InputCellDelegate {
 
 }
 
-extension MenuGroupEditiorViewController: ImageSelectionCellDelegate {
+extension EditorViewController: ImageSelectionCellDelegate {
 
     func updateImage(fromCell cell: UITableViewCell) {
         indexOfEditingImage = tableView.indexPath(for: cell)
@@ -282,7 +282,7 @@ extension MenuGroupEditiorViewController: ImageSelectionCellDelegate {
     }
 }
 
-extension MenuGroupEditiorViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension EditorViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
 

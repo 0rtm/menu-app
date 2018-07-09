@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MenuGroupViewController: UIViewController {
+class MenuGroupViewController: UIViewController, ViewControllerFromNib {
 
     @IBOutlet fileprivate weak var tableView: UITableView!
 
@@ -64,8 +64,8 @@ class MenuGroupViewController: UIViewController {
         tableView.reloadData()
     }
 
-    fileprivate var editorVC: MenuGroupEditiorViewController {
-        return MenuGroupEditiorViewController(nibName: "MenuGroupEditiorViewController", bundle: nil)
+    fileprivate var editorVC: EditorViewController {
+        return EditorViewController.fromNib()
     }
 
     fileprivate func showEditor(for group: MenuGroup?) {

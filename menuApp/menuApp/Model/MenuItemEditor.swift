@@ -42,7 +42,10 @@ class MenuItemEditor: ConfigurableObject {
         let imageSetting = Setting(title: "Image", inputFieldType: .image)
 
         settings = [titleSetting, priceSetting, imageSetting]
-        actions = []
+
+        let deleteAction = Action(title: "Delete")
+        actions = [deleteAction]
+
         sections = [SettingSection.settings(settings: settings) ,SettingSection.actions(actions: actions)]
 
         titleSetting.currentValue = SettingValue.string(value: item.title)

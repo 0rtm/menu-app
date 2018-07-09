@@ -17,13 +17,6 @@ enum SettingSection {
 }
 
 
-//
-//class SettingSection {
-//
-//
-//
-//}
-
 class Action {
     let title: String
     var onAction: (()->())? = nil
@@ -38,9 +31,6 @@ protocol ConfigurableObject {
     var title: String { get }
 
     var sections: [SettingSection] { get }
-
-//    var settings: [Setting] { get }
-//    var actions: [Action] { get }
     var delegate: SettingPresentationDelegate? { get set }
     var canSave: Bool { get }
 

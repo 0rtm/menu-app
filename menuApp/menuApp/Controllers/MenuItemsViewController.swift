@@ -66,7 +66,7 @@ class MenuItemsViewController: UIViewController {
     }
 
     fileprivate func showEditor(forItem item: MenuItem, isNew: Bool) {
-        let editorVC = MenuGroupEditiorViewController(nibName: "MenuGroupEditiorViewController", bundle: nil)
+        let editorVC = EditorViewController.fromNib()
         let model = MenuItemEditor(item: item, isNew: isNew)
         editorVC.model = model
 
