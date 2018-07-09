@@ -24,8 +24,10 @@ class MenuItemTableViewCell: UITableViewCell, CellFromNib {
         self.imageView?.image = nil
     }
 
-    func configure(forMenuItem menuItem: MenuItem) {
+    func configure(forMenuItem menuItem: MenuItem, numberFormatter formatter: NumberFormatter) {
         titleLabel.text = menuItem.title
+        descriptionLabel.text = menuItem.info
+        priceLabel.text = formatter.string(from: menuItem.price)//String( menuItem.price)
 
         if let image = menuItem.image {
             itemImageView.image = image

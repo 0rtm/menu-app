@@ -12,9 +12,9 @@ class MenuGroupEditiorViewController: UIViewController {
 
     @IBOutlet fileprivate weak var tableView: UITableView!
 
-    var model: ConfigurableObject? // = MenuGroupEditor(menuGroup: nil)
+    var model: ConfigurableObject?
     fileprivate var indexOfEditingImage: IndexPath? = nil
-    var saveButton: UIBarButtonItem!
+    fileprivate var saveButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()

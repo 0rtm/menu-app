@@ -34,7 +34,11 @@ class MenuGroupViewController: UIViewController {
 
     fileprivate func configureBarButtons() {
         let addButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addItem))
-        self.navigationItem.rightBarButtonItem = addButton
+        navigationItem.rightBarButtonItem = addButton
+
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        navigationItem.backBarButtonItem = backButton
     }
 
     fileprivate func setupTableView() {
@@ -129,9 +133,7 @@ extension MenuGroupViewController: UITableViewDelegate {
 
         //let model =
         let vc = MenuItemsViewController()
-        let backB = UIBarButtonItem()
-        backB.title = ""
-        self.navigationItem.backBarButtonItem = backB
+        vc.menuGroup = menuGroup
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

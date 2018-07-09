@@ -13,7 +13,7 @@ public class MenuItem: NSManagedObject {
 
     @NSManaged var title: String
     @NSManaged var info: String
-    @NSManaged var price: Decimal
+    @NSManaged var price: NSDecimalNumber
     @NSManaged var imageData: Data?
 
     var image: UIImage? {

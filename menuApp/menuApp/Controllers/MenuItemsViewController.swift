@@ -16,6 +16,12 @@ class MenuItemsViewController: UIViewController {
 
     var menuGroup: MenuGroup? = nil
 
+    fileprivate lazy var currencyNumberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        return formatter
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
@@ -97,7 +103,7 @@ extension MenuItemsViewController: UITableViewDataSource {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: MenuItemTableViewCell.reuseIdentifier, for: indexPath) as! MenuItemTableViewCell
 
-        cell.configure(forMenuItem: menuItem)
+        cell.configure(forMenuItem: menuItem, numberFormatter: currencyNumberFormatter)
 
         return cell
     }
