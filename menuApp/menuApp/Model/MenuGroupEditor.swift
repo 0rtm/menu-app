@@ -10,21 +10,50 @@ import Foundation
 import UIKit
 import CoreData
 
+
+enum SettingSection {
+    case settings(settings: [Setting])
+    case actions(actions: [Action])
+}
+
+
+//
+//class SettingSection {
+//
+//
+//
+//}
+
+class Action {
+    let title: String
+    var onAction: (()->())? = nil
+
+    init(title: String) {
+        self.title = title
+    }
+}
+
 protocol ConfigurableObject {
 
     var title: String { get }
-    var settings: [Setting] { get }
+
+    var sections: [SettingSection] { get }
+
+//    var settings: [Setting] { get }
+//    var actions: [Action] { get }
     var delegate: SettingPresentationDelegate? { get set }
     var canSave: Bool { get }
 
     func saveChanges()
-    
     func discardChanges()
 }
 
 class MenuGroupEditor: ConfigurableObject {
 
-    private(set) var settings: [Setting]
+    private let settings: [Setting]
+    private let actions: [Action]
+    let sections: [SettingSection]
+
     weak var delegate: SettingPresentationDelegate? = nil
 
     var title: String {
@@ -72,6 +101,12 @@ class MenuGroupEditor: ConfigurableObject {
 
         settings = [titleSetting, imageSetting, descriptionSetting]
 
+        let deleteAction = Action(title: "Delete")
+
+        actions = [deleteAction]
+
+        sections = [SettingSection.settings(settings: settings) ,SettingSection.actions(actions: actions)]
+
         titleSetting.onChangeAction = {[unowned self, weak titleSetting] (action) in
             if case .string(let value) = action {
 
@@ -82,7 +117,7 @@ class MenuGroupEditor: ConfigurableObject {
             self.delegate?.updateCanSave(canSave: self.canSave)
         }
 
-        titleSetting.currentValue = SettingValue.string(newValue: menuGroup?.title)
+        titleSetting.currentValue = SettingValue.string(value: menuGroup?.title)
 
         imageSetting.onChangeAction = {[weak self, weak imageSetting]  (action) in
             if case .image(let image) = action {
@@ -93,7 +128,11 @@ class MenuGroupEditor: ConfigurableObject {
                 self?.delegate?.update(setting: _imageSetting)
             }
         }
-        imageSetting.currentValue = SettingValue.image(newValue: menuGroup?.image)
+        imageSetting.currentValue = SettingValue.image(value: menuGroup?.image)
+
+        deleteAction.onAction = {[weak self] in
+            print("will delete")
+        }
     }
 
     func saveChanges() {

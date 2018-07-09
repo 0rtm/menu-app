@@ -22,7 +22,7 @@
 		AC9D2E7720F25F6E000E9352 /* CellFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D2E7620F25F6E000E9352 /* CellFromNib.swift */; };
 		ACC3981920F27B2700434BF9 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC3981820F27B2700434BF9 /* Setting.swift */; };
 		ACC3981B20F27B4100434BF9 /* InputFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC3981A20F27B4100434BF9 /* InputFieldType.swift */; };
-		ACC3981D20F27B5B00434BF9 /* ChaneAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC3981C20F27B5B00434BF9 /* ChaneAction.swift */; };
+		ACC3981D20F27B5B00434BF9 /* SettingValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC3981C20F27B5B00434BF9 /* SettingValue.swift */; };
 		ACC3981F20F27C0000434BF9 /* MenuGroupEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC3981E20F27C0000434BF9 /* MenuGroupEditor.swift */; };
 		ACD5757120F17A01000EA7A2 /* ShortInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD5756F20F17A01000EA7A2 /* ShortInputTableViewCell.swift */; };
 		ACD5757220F17A01000EA7A2 /* ShortInputTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD5757020F17A01000EA7A2 /* ShortInputTableViewCell.xib */; };
@@ -31,6 +31,8 @@
 		ACD5757B20F188CC000EA7A2 /* ImageSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD5757920F188CC000EA7A2 /* ImageSelectionTableViewCell.swift */; };
 		ACD5757C20F188CC000EA7A2 /* ImageSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD5757A20F188CC000EA7A2 /* ImageSelectionTableViewCell.xib */; };
 		ACDDA18E20F2D3DA006FF685 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDDA18D20F2D3DA006FF685 /* UIColor+Extension.swift */; };
+		ACDDA19120F2F199006FF685 /* SettingActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDDA18F20F2F199006FF685 /* SettingActionTableViewCell.swift */; };
+		ACDDA19220F2F199006FF685 /* SettingActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACDDA19020F2F199006FF685 /* SettingActionTableViewCell.xib */; };
 		ACF8C7BB20F0272B00752385 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF8C7BA20F0272B00752385 /* AppDelegate.swift */; };
 		ACF8C7BD20F0272B00752385 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF8C7BC20F0272B00752385 /* ViewController.swift */; };
 		ACF8C7C020F0272B00752385 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACF8C7BE20F0272B00752385 /* Main.storyboard */; };
@@ -68,7 +70,7 @@
 		AC9D2E7620F25F6E000E9352 /* CellFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellFromNib.swift; sourceTree = "<group>"; };
 		ACC3981820F27B2700434BF9 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		ACC3981A20F27B4100434BF9 /* InputFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldType.swift; sourceTree = "<group>"; };
-		ACC3981C20F27B5B00434BF9 /* ChaneAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaneAction.swift; sourceTree = "<group>"; };
+		ACC3981C20F27B5B00434BF9 /* SettingValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingValue.swift; sourceTree = "<group>"; };
 		ACC3981E20F27C0000434BF9 /* MenuGroupEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGroupEditor.swift; sourceTree = "<group>"; };
 		ACD5756F20F17A01000EA7A2 /* ShortInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortInputTableViewCell.swift; sourceTree = "<group>"; };
 		ACD5757020F17A01000EA7A2 /* ShortInputTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShortInputTableViewCell.xib; sourceTree = "<group>"; };
@@ -77,6 +79,8 @@
 		ACD5757920F188CC000EA7A2 /* ImageSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		ACD5757A20F188CC000EA7A2 /* ImageSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSelectionTableViewCell.xib; sourceTree = "<group>"; };
 		ACDDA18D20F2D3DA006FF685 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		ACDDA18F20F2F199006FF685 /* SettingActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingActionTableViewCell.swift; sourceTree = "<group>"; };
+		ACDDA19020F2F199006FF685 /* SettingActionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingActionTableViewCell.xib; sourceTree = "<group>"; };
 		ACF8C7B720F0272B00752385 /* menuApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = menuApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACF8C7BA20F0272B00752385 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACF8C7BC20F0272B00752385 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +167,8 @@
 				AC5E2B6D20F29F4200CE39A3 /* MenuGroupTableViewCell.xib */,
 				AC4CFDE420F2BFB10034B288 /* MenuItemTableViewCell.swift */,
 				AC4CFDE520F2BFB10034B288 /* MenuItemTableViewCell.xib */,
+				ACDDA18F20F2F199006FF685 /* SettingActionTableViewCell.swift */,
+				ACDDA19020F2F199006FF685 /* SettingActionTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -217,7 +223,7 @@
 				AC7C48AB20F10B2D004FA179 /* CoreData */,
 				ACC3981820F27B2700434BF9 /* Setting.swift */,
 				ACC3981A20F27B4100434BF9 /* InputFieldType.swift */,
-				ACC3981C20F27B5B00434BF9 /* ChaneAction.swift */,
+				ACC3981C20F27B5B00434BF9 /* SettingValue.swift */,
 				ACC3981E20F27C0000434BF9 /* MenuGroupEditor.swift */,
 				AC4CFDE820F2C17A0034B288 /* MenuItemEditor.swift */,
 				AC4CFDEA20F2C19F0034B288 /* SettingPresentationDelegate.swift */,
@@ -312,6 +318,7 @@
 				AC7C48A920F10B0E004FA179 /* MenuGroupViewController.xib in Resources */,
 				AC4CFDE320F2BCD60034B288 /* MenuItemsViewController.xib in Resources */,
 				ACD5757C20F188CC000EA7A2 /* ImageSelectionTableViewCell.xib in Resources */,
+				ACDDA19220F2F199006FF685 /* SettingActionTableViewCell.xib in Resources */,
 				AC5E2B6F20F29F4200CE39A3 /* MenuGroupTableViewCell.xib in Resources */,
 				ACF8C7C520F0272C00752385 /* Assets.xcassets in Resources */,
 				AC4CFDE720F2BFB10034B288 /* MenuItemTableViewCell.xib in Resources */,
@@ -350,9 +357,10 @@
 				AC9D2E7720F25F6E000E9352 /* CellFromNib.swift in Sources */,
 				ACD5757120F17A01000EA7A2 /* ShortInputTableViewCell.swift in Sources */,
 				ACD5757520F17D42000EA7A2 /* LongInputTableViewCell.swift in Sources */,
+				ACDDA19120F2F199006FF685 /* SettingActionTableViewCell.swift in Sources */,
 				AC5E2B6E20F29F4200CE39A3 /* MenuGroupTableViewCell.swift in Sources */,
 				AC4CFDE220F2BCD60034B288 /* MenuItemsViewController.swift in Sources */,
-				ACC3981D20F27B5B00434BF9 /* ChaneAction.swift in Sources */,
+				ACC3981D20F27B5B00434BF9 /* SettingValue.swift in Sources */,
 				AC7C48A820F10B0E004FA179 /* MenuGroupViewController.swift in Sources */,
 				ACC3981B20F27B4100434BF9 /* InputFieldType.swift in Sources */,
 			);

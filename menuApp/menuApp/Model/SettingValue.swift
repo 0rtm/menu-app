@@ -1,5 +1,5 @@
 //
-//  ChaneAction.swift
+//  SettingValue.swift
 //  menuApp
 //
 //  Created by Artem Tselikov on 2018-07-08.
@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 enum SettingValue {
-    case string(newValue: String?)
-    case image(newValue: UIImage?)
+    case string(value: String?)
+    case image(value: UIImage?)
+    case action
 }

@@ -36,6 +36,7 @@ class MenuGroupEditiorViewController: UIViewController {
         tableView.register(ShortInputTableViewCell.nib, forCellReuseIdentifier: ShortInputTableViewCell.reuseIdentifier)
         tableView.register(LongInputTableViewCell.nib, forCellReuseIdentifier: LongInputTableViewCell.reuseIdentifier)
         tableView.register(ImageSelectionTableViewCell.nib, forCellReuseIdentifier: ImageSelectionTableViewCell.reuseIdentifier)
+        tableView.register(SettingActionTableViewCell.nib, forCellReuseIdentifier: SettingActionTableViewCell.reuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 70
@@ -69,32 +70,79 @@ class MenuGroupEditiorViewController: UIViewController {
     }
 
     fileprivate func updateImageSetting(_ image: UIImage?, at indexPath: IndexPath) {
-        guard let setting = model?.settings[indexPath.row] else {
-            return
-        }
-        setting.onChangeAction?(.image(newValue: image))
+        let _setting = setting(at: indexPath)
+        _setting?.onChangeAction?(.image(value: image))
     }
 
     fileprivate func updateStringSetting(_ string: String?, at indexPath: IndexPath) {
-        guard let setting = model?.settings[indexPath.row] else {
-            return
+        let _setting = setting(at: indexPath)
+        _setting?.onChangeAction?(.string(value: string))
+    }
+
+    fileprivate func setting(at indexPath: IndexPath) -> Setting? {
+        guard let section = model?.sections[indexPath.section] else {
+            return nil
         }
-        setting.onChangeAction?(.string(newValue: string))
+
+        guard  case .settings(let settings) = section else {
+            return nil
+        }
+
+        return settings[indexPath.row]
+    }
+
+    fileprivate func action(at indexPath: IndexPath) -> Action? {
+        guard let section = model?.sections[indexPath.section] else {
+            return nil
+        }
+
+        guard case .actions(let actions) = section else {
+            return nil
+        }
+
+        return actions[indexPath.row]
     }
 }
 
 extension MenuGroupEditiorViewController: UITableViewDataSource {
 
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return model?.sections.count ?? 0
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? 0 : 10.0
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model?.settings.count ?? 0
+
+        guard let section = model?.sections[section] else {
+            return 0
+        }
+        switch section {
+        case .settings(let settings):
+            return settings.count
+        case .actions(let actions):
+            return actions.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        guard let setting = model?.settings[indexPath.row] else {
+        guard let section = model?.sections[indexPath.section] else {
             fatalError("Model must not be nil")
         }
 
+        switch section {
+        case .settings(let settings):
+             return cellForSettings(settings, indexPath, tableView)
+        case .actions(let actions):
+            return cellForActions(actions, indexPath, tableView)
+        }
+    }
+
+    fileprivate func cellForSettings(_ settings: [Setting], _ indexPath: IndexPath, _ tableView: UITableView) -> UITableViewCell {
+        let setting = settings[indexPath.row]
         switch setting.inputFieldType {
         case .small(let keyboardType):
             return smallInputCell(tableView, indexPath, keyboardType, setting)
@@ -103,6 +151,16 @@ extension MenuGroupEditiorViewController: UITableViewDataSource {
         case .image:
             return imageInputCell(tableView, indexPath, setting)
         }
+    }
+
+    fileprivate func cellForActions(_ action: [Action],
+                                    _ indexPath: IndexPath,
+                                    _ tableView: UITableView)-> UITableViewCell {
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: SettingActionTableViewCell.reuseIdentifier, for: indexPath) as! SettingActionTableViewCell
+        cell.titleLabel.text = action[indexPath.row].title
+        return cell
+
     }
 
     fileprivate func smallInputCell(_ tableView: UITableView,
@@ -151,6 +209,16 @@ extension MenuGroupEditiorViewController: UITableViewDataSource {
 
 extension MenuGroupEditiorViewController: UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        guard let action = action(at: indexPath) else {
+            return
+        }
+        action.onAction?()
+    }
+
 }
 
 extension MenuGroupEditiorViewController: SettingPresentationDelegate {
@@ -161,12 +229,23 @@ extension MenuGroupEditiorViewController: SettingPresentationDelegate {
 
     func update(setting: Setting) {
 
-        guard let index = model?.settings.index(of: setting) else {
+        guard let sections = model?.sections else {
             return
         }
 
-        let indexPath = IndexPath(row: index, section: 0)
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+        for (sectionIndex, section) in sections.enumerated() {
+
+            guard case .settings(let settins) = section else {
+                break
+            }
+
+            guard let indexOfSetting = settins.index(of: setting) else {
+                break
+            }
+
+            let indexPath = IndexPath(row: indexOfSetting, section: sectionIndex)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
     }
 }
 

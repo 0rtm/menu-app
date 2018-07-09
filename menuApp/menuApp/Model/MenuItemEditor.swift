@@ -28,7 +28,10 @@ class MenuItemEditor: ConfigurableObject {
     fileprivate let item: MenuItem
     fileprivate let isNew: Bool
 
-    let settings: [Setting]
+    private let settings: [Setting]
+    private let actions: [Action]
+
+    private(set) var sections: [SettingSection]
 
     init(item: MenuItem, isNew: Bool) {
         self.item = item
@@ -39,8 +42,10 @@ class MenuItemEditor: ConfigurableObject {
         let imageSetting = Setting(title: "Image", inputFieldType: .image)
 
         settings = [titleSetting, priceSetting, imageSetting]
+        actions = []
+        sections = [SettingSection.settings(settings: settings) ,SettingSection.actions(actions: actions)]
 
-        titleSetting.currentValue = SettingValue.string(newValue: item.title)
+        titleSetting.currentValue = SettingValue.string(value: item.title)
         titleSetting.onChangeAction = {[unowned self, weak titleSetting] action in
             if case .string(let value) = action {
                 guard let newTitle = value else { return }
@@ -50,7 +55,7 @@ class MenuItemEditor: ConfigurableObject {
             self.delegate?.updateCanSave(canSave: self.canSave)
         }
 
-        priceSetting.currentValue = SettingValue.string(newValue: item.price.stringValue)
+        priceSetting.currentValue = SettingValue.string(value: item.price.stringValue)
         priceSetting.onChangeAction = {[unowned self, weak priceSetting] action in
             if case .string(let value) = action {
                 guard let newPrice = value else { return }
