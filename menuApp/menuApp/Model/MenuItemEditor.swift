@@ -75,6 +75,7 @@ final class MenuItemEditor: ConfigurableObject {
             self.delegate?.updateCanSave(canSave: self.canSave)
         }
 
+        descriptionSetting.currentValue = SettingValue.string(value: item.info)
         descriptionSetting.onChangeAction = {[unowned self, unowned descriptionSetting] action in
             guard case .string(let value) = action else {
                 return
@@ -101,17 +102,16 @@ final class MenuItemEditor: ConfigurableObject {
     }
 
     func saveChanges() {
-        let moc = AppEnvironment.current.mainContext
-        try! moc.save()
+        try! item.managedObjectContext?.save()
     }
 
     func discardChanges() {
-        let moc = AppEnvironment.current.mainContext
+        let moc = item.managedObjectContext
         if isNew {
-            moc.delete(item)
+            moc?.delete(item)
             return
         }
-        moc.rollback()
+        moc?.rollback()
     }
 
     fileprivate func deleteOrDiscard() {
@@ -119,8 +119,7 @@ final class MenuItemEditor: ConfigurableObject {
         if (isNew) {
             discardChanges()
         } else {
-            AppEnvironment.current.mainContext.delete(item)
-            AppEnvironment.current.saveContext()
+            item.managedObjectContext?.delete(item)
         }
 
         self.delegate?.dismiss()
