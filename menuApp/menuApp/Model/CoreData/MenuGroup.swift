@@ -30,7 +30,7 @@ public class MenuGroup: NSManagedObject {
                 imageData = nil
                 return
             }
-            imageData = UIImageJPEGRepresentation(_image, 0.95)
+            imageData = UIImageJPEGRepresentation(_image, 1)
         }
     }
 
