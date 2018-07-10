@@ -82,6 +82,11 @@ extension MenuGroupViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController?.fetchedObjects?.count ?? 0
+
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 140.0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -119,9 +124,9 @@ extension MenuGroupViewController: UITableViewDataSource {
                 guard let menuGroup = self.fetchedResultsController?.object(at: indexPath) else {
                     return
                 }
-                let moc = AppEnvironment.current.mainContext
-                moc.delete(menuGroup)
-                try! moc.save()
+                let moc = menuGroup.managedObjectContext
+                moc?.delete(menuGroup)
+                try! moc?.save()
             })
         }
         return _deleteRowAction!
@@ -161,7 +166,9 @@ extension MenuGroupViewController: NSFetchedResultsControllerDelegate {
             tableView.insertRows(at: [indexPath], with: .automatic)
         case .update:
             guard let indexPath = indexPath else { fatalError("Index path should be not nil") }
-            tableView.reloadRows(at: [indexPath], with: .automatic)
+            guard let item = controller.object(at: indexPath) as? MenuGroup else { break}
+            guard let cell = tableView.cellForRow(at: indexPath) as? MenuGroupTableViewCell else { break }
+            cell.configureFor(menuGroup: item)
         case .move:
             guard let indexPath = indexPath else { fatalError("Index path should be not nil") }
             guard let newIndexPath = newIndexPath else { fatalError("New index path should be not nil") }

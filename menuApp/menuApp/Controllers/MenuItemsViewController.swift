@@ -158,7 +158,9 @@ extension MenuItemsViewController: NSFetchedResultsControllerDelegate {
             tableView.insertRows(at: [indexPath], with: .automatic)
         case .update:
             guard let indexPath = indexPath else { fatalError("Index path should be not nil") }
-            tableView.reloadRows(at: [indexPath], with: .automatic)
+            guard let item = controller.object(at: indexPath) as? MenuItem else { break}
+            guard let cell = tableView.cellForRow(at: indexPath) as? MenuItemTableViewCell else { break }
+            cell.configure(forMenuItem: item, numberFormatter: currencyNumberFormatter)
         case .move:
             guard let indexPath = indexPath else { fatalError("Index path should be not nil") }
             guard let newIndexPath = newIndexPath else { fatalError("New index path should be not nil") }

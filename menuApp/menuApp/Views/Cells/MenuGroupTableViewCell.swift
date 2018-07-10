@@ -14,6 +14,7 @@ class MenuGroupTableViewCell: UITableViewCell, CellFromNib {
     @IBOutlet fileprivate weak var menuImageView: UIImageView!
 
     override func prepareForReuse() {
+        super.prepareForReuse()
         menuImageView.image = nil
     }
 
