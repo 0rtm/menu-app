@@ -13,7 +13,7 @@ protocol ImageSelectionCellDelegate: class {
     func deleteImage(fromCell: UITableViewCell)
 }
 
-class ImageSelectionTableViewCell: UITableViewCell, CellFromNib {
+final class ImageSelectionTableViewCell: UITableViewCell, CellFromNib {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet fileprivate weak var imagePreviewView: UIImageView!

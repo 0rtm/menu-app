@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuGroupTableViewCell: UITableViewCell, CellFromNib {
+final class MenuGroupTableViewCell: UITableViewCell, CellFromNib {
 
     @IBOutlet fileprivate weak var titleLabel: UILabel!
     @IBOutlet fileprivate weak var menuImageView: UIImageView!

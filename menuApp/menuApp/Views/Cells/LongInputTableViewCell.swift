@@ -8,8 +8,7 @@
 
 import UIKit
 
-
-class LongInputTableViewCell: UITableViewCell, CellFromNib {
+final class LongInputTableViewCell: UITableViewCell, CellFromNib {
 
     weak var delegate: InputCellDelegate?
 

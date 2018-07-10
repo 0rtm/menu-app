@@ -44,7 +44,6 @@
 		ACF8C7BB20F0272B00752385 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF8C7BA20F0272B00752385 /* AppDelegate.swift */; };
 		ACF8C7C320F0272B00752385 /* menuApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACF8C7C120F0272B00752385 /* menuApp.xcdatamodeld */; };
 		ACF8C7C820F0272C00752385 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACF8C7C620F0272C00752385 /* LaunchScreen.storyboard */; };
-		ACF8C7D320F0272C00752385 /* menuAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF8C7D220F0272C00752385 /* menuAppTests.swift */; };
 		ACF8C7DF20F028CE00752385 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF8C7DE20F028CE00752385 /* MenuItem.swift */; };
 		ACF8C7E120F028E000752385 /* MenuGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF8C7E020F028E000752385 /* MenuGroup.swift */; };
 /* End PBXBuildFile section */
@@ -100,7 +99,6 @@
 		ACF8C7C720F0272C00752385 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACF8C7C920F0272C00752385 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACF8C7CE20F0272C00752385 /* menuAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = menuAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ACF8C7D220F0272C00752385 /* menuAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuAppTests.swift; sourceTree = "<group>"; };
 		ACF8C7D420F0272C00752385 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACF8C7DE20F028CE00752385 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		ACF8C7E020F028E000752385 /* MenuGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGroup.swift; sourceTree = "<group>"; };
@@ -259,7 +257,6 @@
 		ACF8C7D120F0272C00752385 /* menuAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				ACF8C7D220F0272C00752385 /* menuAppTests.swift */,
 				AC5839FC20F438C2001CEB3E /* MenuGroupEditorTest.swift */,
 				ACF8C7D420F0272C00752385 /* Info.plist */,
 				AC5839FE20F43AD8001CEB3E /* TestHelpers.swift */,
@@ -420,7 +417,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACF8C7D320F0272C00752385 /* menuAppTests.swift in Sources */,
 				AC5839FD20F438C2001CEB3E /* MenuGroupEditorTest.swift in Sources */,
 				AC5839FF20F43AD8001CEB3E /* TestHelpers.swift in Sources */,
 			);

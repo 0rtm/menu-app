@@ -13,7 +13,7 @@ protocol InputCellDelegate: class {
     func inputChanged(to: String?, inCell: UITableViewCell)
 }
 
-class ShortInputTableViewCell: UITableViewCell, CellFromNib {
+final class ShortInputTableViewCell: UITableViewCell, CellFromNib {
 
     weak var delegate: InputCellDelegate? = nil
 
