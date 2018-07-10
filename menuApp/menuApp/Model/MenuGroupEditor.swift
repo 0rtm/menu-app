@@ -37,7 +37,7 @@ protocol ConfigurableObject {
     func discardChanges()
 }
 
-class MenuGroupEditor: ConfigurableObject {
+final class MenuGroupEditor: ConfigurableObject {
 
     private let settings: [Setting]
     private let actions: [Action]

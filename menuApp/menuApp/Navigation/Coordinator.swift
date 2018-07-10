@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class Coordinator {
+final class Coordinator {
 
     let rootViewController: UINavigationController
 

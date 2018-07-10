@@ -14,6 +14,8 @@
 		AC4CFDE920F2C17A0034B288 /* MenuItemEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4CFDE820F2C17A0034B288 /* MenuItemEditor.swift */; };
 		AC4CFDEB20F2C19F0034B288 /* SettingPresentationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4CFDEA20F2C19F0034B288 /* SettingPresentationDelegate.swift */; };
 		AC5839FB20F4349E001CEB3E /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5839FA20F4349E001CEB3E /* Managed.swift */; };
+		AC5839FD20F438C2001CEB3E /* MenuGroupEditorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5839FC20F438C2001CEB3E /* MenuGroupEditorTest.swift */; };
+		AC5839FF20F43AD8001CEB3E /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5839FE20F43AD8001CEB3E /* TestHelpers.swift */; };
 		AC5E2B6E20F29F4200CE39A3 /* MenuGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E2B6C20F29F4200CE39A3 /* MenuGroupTableViewCell.swift */; };
 		AC5E2B6F20F29F4200CE39A3 /* MenuGroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E2B6D20F29F4200CE39A3 /* MenuGroupTableViewCell.xib */; };
 		AC7C48A820F10B0E004FA179 /* MenuGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7C48A620F10B0E004FA179 /* MenuGroupViewController.swift */; };
@@ -39,7 +41,6 @@
 		ACDDA19920F30953006FF685 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDDA19820F30953006FF685 /* AppEnvironment.swift */; };
 		ACDDA19B20F309EE006FF685 /* DefaultEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDDA19A20F309EE006FF685 /* DefaultEnvironment.swift */; };
 		ACF8C7BB20F0272B00752385 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF8C7BA20F0272B00752385 /* AppDelegate.swift */; };
-		ACF8C7C020F0272B00752385 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACF8C7BE20F0272B00752385 /* Main.storyboard */; };
 		ACF8C7C320F0272B00752385 /* menuApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACF8C7C120F0272B00752385 /* menuApp.xcdatamodeld */; };
 		ACF8C7C520F0272C00752385 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACF8C7C420F0272C00752385 /* Assets.xcassets */; };
 		ACF8C7C820F0272C00752385 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACF8C7C620F0272C00752385 /* LaunchScreen.storyboard */; };
@@ -66,6 +67,8 @@
 		AC4CFDE820F2C17A0034B288 /* MenuItemEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemEditor.swift; sourceTree = "<group>"; };
 		AC4CFDEA20F2C19F0034B288 /* SettingPresentationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPresentationDelegate.swift; sourceTree = "<group>"; };
 		AC5839FA20F4349E001CEB3E /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
+		AC5839FC20F438C2001CEB3E /* MenuGroupEditorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGroupEditorTest.swift; sourceTree = "<group>"; };
+		AC5839FE20F43AD8001CEB3E /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		AC5E2B6C20F29F4200CE39A3 /* MenuGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGroupTableViewCell.swift; sourceTree = "<group>"; };
 		AC5E2B6D20F29F4200CE39A3 /* MenuGroupTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuGroupTableViewCell.xib; sourceTree = "<group>"; };
 		AC7C48A620F10B0E004FA179 /* MenuGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGroupViewController.swift; sourceTree = "<group>"; };
@@ -92,7 +95,6 @@
 		ACDDA19A20F309EE006FF685 /* DefaultEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultEnvironment.swift; sourceTree = "<group>"; };
 		ACF8C7B720F0272B00752385 /* menuApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = menuApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACF8C7BA20F0272B00752385 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ACF8C7BF20F0272B00752385 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ACF8C7C220F0272B00752385 /* menuApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = menuApp.xcdatamodel; sourceTree = "<group>"; };
 		ACF8C7C420F0272C00752385 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACF8C7C720F0272C00752385 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -239,15 +241,14 @@
 		ACF8C7B920F0272B00752385 /* menuApp */ = {
 			isa = PBXGroup;
 			children = (
-				AC5839F920F43490001CEB3E /* Helpers */,
 				ACDDA19C20F30A09006FF685 /* Environment */,
-				AC9D2E7520F25F2B000E9352 /* Extensions */,
-				ACD5756D20F179D1000EA7A2 /* Views */,
+				ACDDA19520F2FB1C006FF685 /* Navigation */,
 				AC7C48AA20F10B1D004FA179 /* Controllers */,
 				ACF8C7DD20F028B200752385 /* Model */,
-				ACDDA19520F2FB1C006FF685 /* Navigation */,
+				ACD5756D20F179D1000EA7A2 /* Views */,
+				AC5839F920F43490001CEB3E /* Helpers */,
+				AC9D2E7520F25F2B000E9352 /* Extensions */,
 				ACF8C7BA20F0272B00752385 /* AppDelegate.swift */,
-				ACF8C7BE20F0272B00752385 /* Main.storyboard */,
 				ACF8C7C420F0272C00752385 /* Assets.xcassets */,
 				ACF8C7C620F0272C00752385 /* LaunchScreen.storyboard */,
 				ACF8C7C920F0272C00752385 /* Info.plist */,
@@ -259,7 +260,9 @@
 			isa = PBXGroup;
 			children = (
 				ACF8C7D220F0272C00752385 /* menuAppTests.swift */,
+				AC5839FC20F438C2001CEB3E /* MenuGroupEditorTest.swift */,
 				ACF8C7D420F0272C00752385 /* Info.plist */,
+				AC5839FE20F43AD8001CEB3E /* TestHelpers.swift */,
 			);
 			path = menuAppTests;
 			sourceTree = "<group>";
@@ -367,7 +370,6 @@
 				ACF8C7C520F0272C00752385 /* Assets.xcassets in Resources */,
 				AC4CFDE720F2BFB10034B288 /* MenuItemTableViewCell.xib in Resources */,
 				ACD5757220F17A01000EA7A2 /* ShortInputTableViewCell.xib in Resources */,
-				ACF8C7C020F0272B00752385 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +421,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACF8C7D320F0272C00752385 /* menuAppTests.swift in Sources */,
+				AC5839FD20F438C2001CEB3E /* MenuGroupEditorTest.swift in Sources */,
+				AC5839FF20F43AD8001CEB3E /* TestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,14 +437,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		ACF8C7BE20F0272B00752385 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ACF8C7BF20F0272B00752385 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		ACF8C7C620F0272C00752385 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

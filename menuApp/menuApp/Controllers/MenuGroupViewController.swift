@@ -15,7 +15,7 @@ protocol MenuGroupViewControllerDelegate: class {
     func edit(menuGroup: MenuGroup)
 }
 
-class MenuGroupViewController: UIViewController, ViewControllerFromNib {
+final class MenuGroupViewController: UIViewController, ViewControllerFromNib {
 
     weak var delegate: MenuGroupViewControllerDelegate? = nil
 

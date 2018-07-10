@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Setting {
+final class Setting {
     let title: String
     let inputFieldType: InputFieldType
     var onChangeAction: ((SettingValue)->())? = nil

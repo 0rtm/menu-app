@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MenuItemEditor: ConfigurableObject {
+final class MenuItemEditor: ConfigurableObject {
 
     var canSave: Bool {
         let hasTitle = item.title.count > 0

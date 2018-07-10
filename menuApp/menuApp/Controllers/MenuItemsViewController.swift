@@ -14,7 +14,7 @@ protocol MenuItemsViewControllerDelegate: class {
     func editMenuItem(menuItem: MenuItem)
 }
 
-class MenuItemsViewController: UIViewController, ViewControllerFromNib {
+final class MenuItemsViewController: UIViewController, ViewControllerFromNib {
 
     @IBOutlet weak var tableView: UITableView!
     fileprivate var fetchedResultsController: NSFetchedResultsController<MenuItem>?

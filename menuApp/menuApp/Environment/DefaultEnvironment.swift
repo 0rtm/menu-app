@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class DefaultEnvironment: Environment {
+final class DefaultEnvironment: Environment {
 
     static let shared = DefaultEnvironment()
 
