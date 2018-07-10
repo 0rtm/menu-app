@@ -13,6 +13,7 @@
 		AC4CFDE720F2BFB10034B288 /* MenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4CFDE520F2BFB10034B288 /* MenuItemTableViewCell.xib */; };
 		AC4CFDE920F2C17A0034B288 /* MenuItemEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4CFDE820F2C17A0034B288 /* MenuItemEditor.swift */; };
 		AC4CFDEB20F2C19F0034B288 /* SettingPresentationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4CFDEA20F2C19F0034B288 /* SettingPresentationDelegate.swift */; };
+		AC5839FB20F4349E001CEB3E /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5839FA20F4349E001CEB3E /* Managed.swift */; };
 		AC5E2B6E20F29F4200CE39A3 /* MenuGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E2B6C20F29F4200CE39A3 /* MenuGroupTableViewCell.swift */; };
 		AC5E2B6F20F29F4200CE39A3 /* MenuGroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E2B6D20F29F4200CE39A3 /* MenuGroupTableViewCell.xib */; };
 		AC7C48A820F10B0E004FA179 /* MenuGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7C48A620F10B0E004FA179 /* MenuGroupViewController.swift */; };
@@ -64,6 +65,7 @@
 		AC4CFDE520F2BFB10034B288 /* MenuItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemTableViewCell.xib; sourceTree = "<group>"; };
 		AC4CFDE820F2C17A0034B288 /* MenuItemEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemEditor.swift; sourceTree = "<group>"; };
 		AC4CFDEA20F2C19F0034B288 /* SettingPresentationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPresentationDelegate.swift; sourceTree = "<group>"; };
+		AC5839FA20F4349E001CEB3E /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
 		AC5E2B6C20F29F4200CE39A3 /* MenuGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGroupTableViewCell.swift; sourceTree = "<group>"; };
 		AC5E2B6D20F29F4200CE39A3 /* MenuGroupTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuGroupTableViewCell.xib; sourceTree = "<group>"; };
 		AC7C48A620F10B0E004FA179 /* MenuGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGroupViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC5839F920F43490001CEB3E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AC5839FA20F4349E001CEB3E /* Managed.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		AC7C48AA20F10B1D004FA179 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +239,7 @@
 		ACF8C7B920F0272B00752385 /* menuApp */ = {
 			isa = PBXGroup;
 			children = (
+				AC5839F920F43490001CEB3E /* Helpers */,
 				ACDDA19C20F30A09006FF685 /* Environment */,
 				AC9D2E7520F25F2B000E9352 /* Extensions */,
 				ACD5756D20F179D1000EA7A2 /* Views */,
@@ -387,6 +398,7 @@
 				ACC3981F20F27C0000434BF9 /* MenuGroupEditor.swift in Sources */,
 				AC7C48AE20F110B8004FA179 /* EditorViewController.swift in Sources */,
 				ACDDA19420F2F755006FF685 /* ViewControllerFromNib.swift in Sources */,
+				AC5839FB20F4349E001CEB3E /* Managed.swift in Sources */,
 				ACF8C7BB20F0272B00752385 /* AppDelegate.swift in Sources */,
 				ACF8C7E120F028E000752385 /* MenuGroup.swift in Sources */,
 				ACD5757B20F188CC000EA7A2 /* ImageSelectionTableViewCell.swift in Sources */,

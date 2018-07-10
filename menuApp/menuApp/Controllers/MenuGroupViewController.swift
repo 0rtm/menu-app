@@ -63,7 +63,7 @@ class MenuGroupViewController: UIViewController, ViewControllerFromNib {
 
         let r =  NSFetchRequest<MenuGroup>(entityName: "MenuGroup")
         r.fetchBatchSize = 20
-        r.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        r.sortDescriptors = MenuGroup.defaultSortDescriptors
 
         fetchedResultsController = NSFetchedResultsController(fetchRequest: r, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController?.delegate = self
@@ -119,9 +119,9 @@ extension MenuGroupViewController: UITableViewDataSource {
                 guard let menuGroup = self.fetchedResultsController?.object(at: indexPath) else {
                     return
                 }
-                let moc = menuGroup.managedObjectContext
-                moc?.delete(menuGroup)
-                try! moc?.save()
+                let moc = AppEnvironment.current.mainContext
+                moc.delete(menuGroup)
+                try! moc.save()
             })
         }
         return _deleteRowAction!

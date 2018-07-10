@@ -35,3 +35,11 @@ public class MenuItem: NSManagedObject {
         }
     }
 }
+
+extension MenuItem: Managed {
+
+    static var defaultSortDescriptors: [NSSortDescriptor] {
+        return [NSSortDescriptor(key: "title", ascending: true)]
+    }
+
+}

@@ -101,8 +101,8 @@ class MenuItemEditor: ConfigurableObject {
     }
 
     func saveChanges() {
-        let moc = item.managedObjectContext
-        try! moc?.save()
+        let moc = AppEnvironment.current.mainContext
+        try! moc.save()
     }
 
     func discardChanges() {

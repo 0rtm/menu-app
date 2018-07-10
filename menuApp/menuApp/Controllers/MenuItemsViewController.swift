@@ -66,7 +66,7 @@ class MenuItemsViewController: UIViewController, ViewControllerFromNib {
 
         let r =  NSFetchRequest<MenuItem>(entityName: "MenuItem")
         r.fetchBatchSize = 20
-        r.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        r.sortDescriptors = MenuItem.defaultSortDescriptors
         r.predicate = NSPredicate(format:"group = %@", _menuGroup)
 
         fetchedResultsController = NSFetchedResultsController(fetchRequest: r, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
@@ -92,10 +92,6 @@ extension MenuItemsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController?.fetchedObjects?.count ?? 0
     }
-
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return MenuItemTableViewCell.defaultHeight
-//    }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
