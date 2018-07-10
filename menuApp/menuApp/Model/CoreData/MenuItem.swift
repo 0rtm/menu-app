@@ -12,6 +12,7 @@ import UIKit
 public class MenuItem: NSManagedObject {
 
     @NSManaged var title: String
+    @NSManaged var createdAt: Date
     @NSManaged var info: String?
     @NSManaged var price: NSDecimalNumber
     @NSManaged var imageData: Data?
@@ -34,12 +35,16 @@ public class MenuItem: NSManagedObject {
             imageData = UIImageJPEGRepresentation(_image, 1)
         }
     }
+
+    override public func awakeFromInsert() {
+        self.createdAt = Date()
+    }
 }
 
 extension MenuItem: Managed {
 
     static var defaultSortDescriptors: [NSSortDescriptor] {
-        return [NSSortDescriptor(key: "title", ascending: true)]
+        return [NSSortDescriptor(key: "createdAt", ascending: true)]
     }
 
 }

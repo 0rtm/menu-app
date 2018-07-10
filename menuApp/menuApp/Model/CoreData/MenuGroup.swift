@@ -12,6 +12,7 @@ import UIKit
 public class MenuGroup: NSManagedObject {
 
     @NSManaged var title: String
+    @NSManaged var createdAt: Date
     @NSManaged var info: String?
     @NSManaged var imageData: Data?
     @NSManaged var items: Set<MenuItem>?
@@ -34,12 +35,16 @@ public class MenuGroup: NSManagedObject {
         }
     }
 
+    override public func awakeFromInsert() {
+        self.createdAt = Date()
+    }
+
 }
 
 extension MenuGroup: Managed {
 
     static var defaultSortDescriptors: [NSSortDescriptor] {
-        return [NSSortDescriptor(key: "title", ascending: true)]
+        return [NSSortDescriptor(key: "createdAt", ascending: true)]
     }
 
 }
