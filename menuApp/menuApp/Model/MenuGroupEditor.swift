@@ -72,14 +72,16 @@ class MenuGroupEditor: ConfigurableObject {
 
         actions = [deleteAction]
 
-        sections = [SettingSection.settings(settings: settings) ,SettingSection.actions(actions: actions)]
+        sections = [.settings(settings: settings), .actions(actions: actions)]
 
         titleSetting.onChangeAction = {[unowned self, weak titleSetting] (action) in
-            if case .string(let value) = action {
-
-                guard let newTitle = value else { return }
-                self.menuGroup.title = newTitle
+            guard case .string(let value) = action else {
+                return
             }
+
+            guard let newTitle = value else { return }
+            self.menuGroup.title = newTitle
+
             titleSetting?.currentValue = action
             self.delegate?.updateCanSave(canSave: self.canSave)
             self.delegate?.updateTitle()
@@ -87,19 +89,27 @@ class MenuGroupEditor: ConfigurableObject {
 
         titleSetting.currentValue = SettingValue.string(value: menuGroup.title)
 
-        imageSetting.onChangeAction = {[weak self, weak imageSetting]  (action) in
-            if case .image(let image) = action {
-                self?.menuGroup.image = image
+        imageSetting.onChangeAction = {[unowned self, unowned imageSetting]  (action) in
+            guard case .image(let image) = action else {
+                return
             }
-            imageSetting?.currentValue = action
-            if let _imageSetting = imageSetting {
-                self?.delegate?.update(setting: _imageSetting)
-            }
+            self.menuGroup.image = image
+            imageSetting.currentValue = action
+            self.delegate?.update(setting: imageSetting)
         }
         imageSetting.currentValue = SettingValue.image(value: menuGroup.image)
 
-        deleteAction.onAction = {[weak self] in
-            self?.deleteOrDiscard()
+        descriptionSetting.currentValue = SettingValue.string(value: menuGroup.info)
+        descriptionSetting.onChangeAction = {[unowned self, unowned descriptionSetting] action in
+            guard case .string(let value) = action else {
+                return
+            }
+            self.menuGroup.info = value
+            descriptionSetting.currentValue = action
+        }
+
+        deleteAction.onAction = {[unowned self] in
+            self.deleteOrDiscard()
         }
     }
 

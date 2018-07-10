@@ -50,34 +50,36 @@ class MenuItemEditor: ConfigurableObject {
         sections = [SettingSection.settings(settings: settings) ,SettingSection.actions(actions: actions)]
 
         titleSetting.currentValue = SettingValue.string(value: item.title)
-        titleSetting.onChangeAction = {[unowned self, weak titleSetting] action in
-            if case .string(let value) = action {
-                guard let newTitle = value else { return }
-                self.item.title = newTitle
+        titleSetting.onChangeAction = {[unowned self, unowned titleSetting] action in
+            guard case .string(let value) = action else {
+                return
             }
-            titleSetting?.currentValue = action
+
+            guard let newTitle = value else { return }
+            self.item.title = newTitle
+
+            titleSetting.currentValue = action
             self.delegate?.updateCanSave(canSave: self.canSave)
             self.delegate?.updateTitle()
         }
 
         priceSetting.currentValue = SettingValue.string(value: item.price.stringValue)
         priceSetting.onChangeAction = {[unowned self, unowned priceSetting] action in
-            if case .string(let value) = action {
-                guard let newPrice = value else { return }
-                self.item.price = NSDecimalNumber(string: newPrice)
+            guard case .string(let value) = action else {
+                return
             }
+            guard let newPrice = value else { return }
+            self.item.price = NSDecimalNumber(string: newPrice)
 
             priceSetting.currentValue = action
             self.delegate?.updateCanSave(canSave: self.canSave)
         }
 
-        descriptionSetting.currentValue = SettingValue.string(value: item.info)
         descriptionSetting.onChangeAction = {[unowned self, unowned descriptionSetting] action in
-            if case .string(let value) = action {
-                guard let newInfo = value else { return }
-                self.item.info = newInfo
+            guard case .string(let value) = action else {
+                return
             }
-
+            self.item.info = value
             descriptionSetting.currentValue = action
         }
 
@@ -86,10 +88,16 @@ class MenuItemEditor: ConfigurableObject {
         }
 
         imageSetting.currentValue = SettingValue.image(value: item.image)
-        imageSetting.onChangeAction = {[unowned self, unowned imageSetting] action in
-
-    
+        imageSetting.onChangeAction = {[unowned self, unowned imageSetting]  (action) in
+            guard case .image(let image) = action else {
+                return
+            }
+            self.item.image = image
+            imageSetting.currentValue = action
+            self.delegate?.update(setting: imageSetting)
         }
+        imageSetting.currentValue = SettingValue.image(value: item.image)
+
     }
 
     func saveChanges() {
